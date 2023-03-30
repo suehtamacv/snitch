@@ -23,6 +23,12 @@ pub enum Format {
     Imm5Rd(FormatImm5Rd),
     Imm5RdRs1(FormatImm5RdRs1),
     Jimm20Rd(FormatJimm20Rd),
+    NfRs1Rs2VdVm(FormatNfRs1Rs2VdVm),
+    NfRs1Rs2VmVs3(FormatNfRs1Rs2VmVs3),
+    NfRs1VdVm(FormatNfRs1VdVm),
+    NfRs1VdVmVs2(FormatNfRs1VdVmVs2),
+    NfRs1VmVs2Vs3(FormatNfRs1VmVs2Vs3),
+    NfRs1VmVs3(FormatNfRs1VmVs3),
     RdRmRs1(FormatRdRmRs1),
     RdRmRs1Rs2(FormatRdRmRs1Rs2),
     RdRmRs1Rs2Rs3(FormatRdRmRs1Rs2Rs3),
@@ -32,9 +38,27 @@ pub enum Format {
     RdRs1Rs3Shamt(FormatRdRs1Rs3Shamt),
     RdRs1Shamt(FormatRdRs1Shamt),
     RdRs1Shamtw(FormatRdRs1Shamtw),
+    RdRs1Zimm11(FormatRdRs1Zimm11),
     RdRs2(FormatRdRs2),
+    RdVmVs2(FormatRdVmVs2),
+    RdVs2(FormatRdVs2),
+    RdZimmZimm10(FormatRdZimmZimm10),
     Rs1(FormatRs1),
     Rs1Rs2(FormatRs1Rs2),
+    Rs1Vd(FormatRs1Vd),
+    Rs1VdVmVs2(FormatRs1VdVmVs2),
+    Rs1VdVmVs2Wd(FormatRs1VdVmVs2Wd),
+    Rs1VdVs2(FormatRs1VdVs2),
+    Rs1Vs3(FormatRs1Vs3),
+    Simm5Vd(FormatSimm5Vd),
+    Simm5VdVmVs2(FormatSimm5VdVmVs2),
+    Simm5VdVs2(FormatSimm5VdVs2),
+    VdVm(FormatVdVm),
+    VdVmVs1Vs2(FormatVdVmVs1Vs2),
+    VdVmVs2(FormatVdVmVs2),
+    VdVs1(FormatVdVs1),
+    VdVs1Vs2(FormatVdVs1Vs2),
+    VdVs2(FormatVdVs2),
 }
 
 impl Format {
@@ -56,6 +80,12 @@ impl Format {
             Self::Imm5Rd(x) => x.raw,
             Self::Imm5RdRs1(x) => x.raw,
             Self::Jimm20Rd(x) => x.raw,
+            Self::NfRs1Rs2VdVm(x) => x.raw,
+            Self::NfRs1Rs2VmVs3(x) => x.raw,
+            Self::NfRs1VdVm(x) => x.raw,
+            Self::NfRs1VdVmVs2(x) => x.raw,
+            Self::NfRs1VmVs2Vs3(x) => x.raw,
+            Self::NfRs1VmVs3(x) => x.raw,
             Self::RdRmRs1(x) => x.raw,
             Self::RdRmRs1Rs2(x) => x.raw,
             Self::RdRmRs1Rs2Rs3(x) => x.raw,
@@ -65,9 +95,27 @@ impl Format {
             Self::RdRs1Rs3Shamt(x) => x.raw,
             Self::RdRs1Shamt(x) => x.raw,
             Self::RdRs1Shamtw(x) => x.raw,
+            Self::RdRs1Zimm11(x) => x.raw,
             Self::RdRs2(x) => x.raw,
+            Self::RdVmVs2(x) => x.raw,
+            Self::RdVs2(x) => x.raw,
+            Self::RdZimmZimm10(x) => x.raw,
             Self::Rs1(x) => x.raw,
             Self::Rs1Rs2(x) => x.raw,
+            Self::Rs1Vd(x) => x.raw,
+            Self::Rs1VdVmVs2(x) => x.raw,
+            Self::Rs1VdVmVs2Wd(x) => x.raw,
+            Self::Rs1VdVs2(x) => x.raw,
+            Self::Rs1Vs3(x) => x.raw,
+            Self::Simm5Vd(x) => x.raw,
+            Self::Simm5VdVmVs2(x) => x.raw,
+            Self::Simm5VdVs2(x) => x.raw,
+            Self::VdVm(x) => x.raw,
+            Self::VdVmVs1Vs2(x) => x.raw,
+            Self::VdVmVs2(x) => x.raw,
+            Self::VdVs1(x) => x.raw,
+            Self::VdVs1Vs2(x) => x.raw,
+            Self::VdVs2(x) => x.raw,
         }
     }
 }
@@ -91,6 +139,12 @@ impl std::fmt::Display for Format {
             Self::Imm5Rd(x) => write!(f, "{}", x),
             Self::Imm5RdRs1(x) => write!(f, "{}", x),
             Self::Jimm20Rd(x) => write!(f, "{}", x),
+            Self::NfRs1Rs2VdVm(x) => write!(f, "{}", x),
+            Self::NfRs1Rs2VmVs3(x) => write!(f, "{}", x),
+            Self::NfRs1VdVm(x) => write!(f, "{}", x),
+            Self::NfRs1VdVmVs2(x) => write!(f, "{}", x),
+            Self::NfRs1VmVs2Vs3(x) => write!(f, "{}", x),
+            Self::NfRs1VmVs3(x) => write!(f, "{}", x),
             Self::RdRmRs1(x) => write!(f, "{}", x),
             Self::RdRmRs1Rs2(x) => write!(f, "{}", x),
             Self::RdRmRs1Rs2Rs3(x) => write!(f, "{}", x),
@@ -100,9 +154,27 @@ impl std::fmt::Display for Format {
             Self::RdRs1Rs3Shamt(x) => write!(f, "{}", x),
             Self::RdRs1Shamt(x) => write!(f, "{}", x),
             Self::RdRs1Shamtw(x) => write!(f, "{}", x),
+            Self::RdRs1Zimm11(x) => write!(f, "{}", x),
             Self::RdRs2(x) => write!(f, "{}", x),
+            Self::RdVmVs2(x) => write!(f, "{}", x),
+            Self::RdVs2(x) => write!(f, "{}", x),
+            Self::RdZimmZimm10(x) => write!(f, "{}", x),
             Self::Rs1(x) => write!(f, "{}", x),
             Self::Rs1Rs2(x) => write!(f, "{}", x),
+            Self::Rs1Vd(x) => write!(f, "{}", x),
+            Self::Rs1VdVmVs2(x) => write!(f, "{}", x),
+            Self::Rs1VdVmVs2Wd(x) => write!(f, "{}", x),
+            Self::Rs1VdVs2(x) => write!(f, "{}", x),
+            Self::Rs1Vs3(x) => write!(f, "{}", x),
+            Self::Simm5Vd(x) => write!(f, "{}", x),
+            Self::Simm5VdVmVs2(x) => write!(f, "{}", x),
+            Self::Simm5VdVs2(x) => write!(f, "{}", x),
+            Self::VdVm(x) => write!(f, "{}", x),
+            Self::VdVmVs1Vs2(x) => write!(f, "{}", x),
+            Self::VdVmVs2(x) => write!(f, "{}", x),
+            Self::VdVs1(x) => write!(f, "{}", x),
+            Self::VdVs1Vs2(x) => write!(f, "{}", x),
+            Self::VdVs2(x) => write!(f, "{}", x),
         }
     }
 }
@@ -485,7 +557,6 @@ pub enum OpcodeImm12RdRs1 {
     Csrrsi,
     Csrrci,
     Flh,
-    Flb,
 }
 
 impl std::fmt::Display for FormatImm12RdRs1 {
@@ -527,7 +598,6 @@ impl std::fmt::Display for OpcodeImm12RdRs1 {
             Self::Csrrsi => write!(f, "csrrsi"),
             Self::Csrrci => write!(f, "csrrci"),
             Self::Flh => write!(f, "flh"),
-            Self::Flb => write!(f, "flb"),
         }
     }
 }
@@ -643,7 +713,6 @@ pub enum OpcodeImm12hiImm12loRs1Rs2 {
     Fsd,
     Fsq,
     Fsh,
-    Fsb,
 }
 
 impl std::fmt::Display for FormatImm12hiImm12loRs1Rs2 {
@@ -668,7 +737,6 @@ impl std::fmt::Display for OpcodeImm12hiImm12loRs1Rs2 {
             Self::Fsd => write!(f, "fsd"),
             Self::Fsq => write!(f, "fsq"),
             Self::Fsh => write!(f, "fsh"),
-            Self::Fsb => write!(f, "fsb"),
         }
     }
 }
@@ -818,6 +886,374 @@ impl std::fmt::Display for OpcodeJimm20Rd {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Jal => write!(f, "jal"),
+        }
+    }
+}
+
+/// The `NfRs1Rs2VdVm` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatNfRs1Rs2VdVm {
+    pub op: OpcodeNfRs1Rs2VdVm,
+    pub raw: u32,
+    pub nf: u32,
+    pub rs1: u32,
+    pub rs2: u32,
+    pub vd: u32,
+    pub vm: u32,
+}
+
+impl FormatNfRs1Rs2VdVm {}
+
+/// Opcodes with the `NfRs1Rs2VdVm` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeNfRs1Rs2VdVm {
+    Vlse8V,
+    Vlse16V,
+    Vlse32V,
+    Vlse64V,
+    Vlse128V,
+    Vlse256V,
+    Vlse512V,
+    Vlse1024V,
+}
+
+impl std::fmt::Display for FormatNfRs1Rs2VdVm {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " nf={:x}", self.nf)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " rs2={:x}", self.rs2)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeNfRs1Rs2VdVm {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vlse8V => write!(f, "vlse8.v"),
+            Self::Vlse16V => write!(f, "vlse16.v"),
+            Self::Vlse32V => write!(f, "vlse32.v"),
+            Self::Vlse64V => write!(f, "vlse64.v"),
+            Self::Vlse128V => write!(f, "vlse128.v"),
+            Self::Vlse256V => write!(f, "vlse256.v"),
+            Self::Vlse512V => write!(f, "vlse512.v"),
+            Self::Vlse1024V => write!(f, "vlse1024.v"),
+        }
+    }
+}
+
+/// The `NfRs1Rs2VmVs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatNfRs1Rs2VmVs3 {
+    pub op: OpcodeNfRs1Rs2VmVs3,
+    pub raw: u32,
+    pub nf: u32,
+    pub rs1: u32,
+    pub rs2: u32,
+    pub vm: u32,
+    pub vs3: u32,
+}
+
+impl FormatNfRs1Rs2VmVs3 {}
+
+/// Opcodes with the `NfRs1Rs2VmVs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeNfRs1Rs2VmVs3 {
+    Vsse8V,
+    Vsse16V,
+    Vsse32V,
+    Vsse64V,
+    Vsse128V,
+    Vsse256V,
+    Vsse512V,
+    Vsse1024V,
+}
+
+impl std::fmt::Display for FormatNfRs1Rs2VmVs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " nf={:x}", self.nf)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " rs2={:x}", self.rs2)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs3={:x}", self.vs3)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeNfRs1Rs2VmVs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vsse8V => write!(f, "vsse8.v"),
+            Self::Vsse16V => write!(f, "vsse16.v"),
+            Self::Vsse32V => write!(f, "vsse32.v"),
+            Self::Vsse64V => write!(f, "vsse64.v"),
+            Self::Vsse128V => write!(f, "vsse128.v"),
+            Self::Vsse256V => write!(f, "vsse256.v"),
+            Self::Vsse512V => write!(f, "vsse512.v"),
+            Self::Vsse1024V => write!(f, "vsse1024.v"),
+        }
+    }
+}
+
+/// The `NfRs1VdVm` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatNfRs1VdVm {
+    pub op: OpcodeNfRs1VdVm,
+    pub raw: u32,
+    pub nf: u32,
+    pub rs1: u32,
+    pub vd: u32,
+    pub vm: u32,
+}
+
+impl FormatNfRs1VdVm {}
+
+/// Opcodes with the `NfRs1VdVm` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeNfRs1VdVm {
+    Vle8V,
+    Vle16V,
+    Vle32V,
+    Vle64V,
+    Vle128V,
+    Vle256V,
+    Vle512V,
+    Vle1024V,
+    Vle8ffV,
+    Vle16ffV,
+    Vle32ffV,
+    Vle64ffV,
+    Vle128ffV,
+    Vle256ffV,
+    Vle512ffV,
+    Vle1024ffV,
+}
+
+impl std::fmt::Display for FormatNfRs1VdVm {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " nf={:x}", self.nf)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeNfRs1VdVm {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vle8V => write!(f, "vle8.v"),
+            Self::Vle16V => write!(f, "vle16.v"),
+            Self::Vle32V => write!(f, "vle32.v"),
+            Self::Vle64V => write!(f, "vle64.v"),
+            Self::Vle128V => write!(f, "vle128.v"),
+            Self::Vle256V => write!(f, "vle256.v"),
+            Self::Vle512V => write!(f, "vle512.v"),
+            Self::Vle1024V => write!(f, "vle1024.v"),
+            Self::Vle8ffV => write!(f, "vle8ff.v"),
+            Self::Vle16ffV => write!(f, "vle16ff.v"),
+            Self::Vle32ffV => write!(f, "vle32ff.v"),
+            Self::Vle64ffV => write!(f, "vle64ff.v"),
+            Self::Vle128ffV => write!(f, "vle128ff.v"),
+            Self::Vle256ffV => write!(f, "vle256ff.v"),
+            Self::Vle512ffV => write!(f, "vle512ff.v"),
+            Self::Vle1024ffV => write!(f, "vle1024ff.v"),
+        }
+    }
+}
+
+/// The `NfRs1VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatNfRs1VdVmVs2 {
+    pub op: OpcodeNfRs1VdVmVs2,
+    pub raw: u32,
+    pub nf: u32,
+    pub rs1: u32,
+    pub vd: u32,
+    pub vm: u32,
+    pub vs2: u32,
+}
+
+impl FormatNfRs1VdVmVs2 {}
+
+/// Opcodes with the `NfRs1VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeNfRs1VdVmVs2 {
+    Vluxei8V,
+    Vluxei16V,
+    Vluxei32V,
+    Vluxei64V,
+    Vluxei128V,
+    Vluxei256V,
+    Vluxei512V,
+    Vluxei1024V,
+    Vloxei8V,
+    Vloxei16V,
+    Vloxei32V,
+    Vloxei64V,
+    Vloxei128V,
+    Vloxei256V,
+    Vloxei512V,
+    Vloxei1024V,
+}
+
+impl std::fmt::Display for FormatNfRs1VdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " nf={:x}", self.nf)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeNfRs1VdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vluxei8V => write!(f, "vluxei8.v"),
+            Self::Vluxei16V => write!(f, "vluxei16.v"),
+            Self::Vluxei32V => write!(f, "vluxei32.v"),
+            Self::Vluxei64V => write!(f, "vluxei64.v"),
+            Self::Vluxei128V => write!(f, "vluxei128.v"),
+            Self::Vluxei256V => write!(f, "vluxei256.v"),
+            Self::Vluxei512V => write!(f, "vluxei512.v"),
+            Self::Vluxei1024V => write!(f, "vluxei1024.v"),
+            Self::Vloxei8V => write!(f, "vloxei8.v"),
+            Self::Vloxei16V => write!(f, "vloxei16.v"),
+            Self::Vloxei32V => write!(f, "vloxei32.v"),
+            Self::Vloxei64V => write!(f, "vloxei64.v"),
+            Self::Vloxei128V => write!(f, "vloxei128.v"),
+            Self::Vloxei256V => write!(f, "vloxei256.v"),
+            Self::Vloxei512V => write!(f, "vloxei512.v"),
+            Self::Vloxei1024V => write!(f, "vloxei1024.v"),
+        }
+    }
+}
+
+/// The `NfRs1VmVs2Vs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatNfRs1VmVs2Vs3 {
+    pub op: OpcodeNfRs1VmVs2Vs3,
+    pub raw: u32,
+    pub nf: u32,
+    pub rs1: u32,
+    pub vm: u32,
+    pub vs2: u32,
+    pub vs3: u32,
+}
+
+impl FormatNfRs1VmVs2Vs3 {}
+
+/// Opcodes with the `NfRs1VmVs2Vs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeNfRs1VmVs2Vs3 {
+    Vsuxei8V,
+    Vsuxei16V,
+    Vsuxei32V,
+    Vsuxei64V,
+    Vsuxei128V,
+    Vsuxei256V,
+    Vsuxei512V,
+    Vsuxei1024V,
+    Vsoxei8V,
+    Vsoxei16V,
+    Vsoxei32V,
+    Vsoxei64V,
+    Vsoxei128V,
+    Vsoxei256V,
+    Vsoxei512V,
+    Vsoxei1024V,
+}
+
+impl std::fmt::Display for FormatNfRs1VmVs2Vs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " nf={:x}", self.nf)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        write!(f, " vs3={:x}", self.vs3)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeNfRs1VmVs2Vs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vsuxei8V => write!(f, "vsuxei8.v"),
+            Self::Vsuxei16V => write!(f, "vsuxei16.v"),
+            Self::Vsuxei32V => write!(f, "vsuxei32.v"),
+            Self::Vsuxei64V => write!(f, "vsuxei64.v"),
+            Self::Vsuxei128V => write!(f, "vsuxei128.v"),
+            Self::Vsuxei256V => write!(f, "vsuxei256.v"),
+            Self::Vsuxei512V => write!(f, "vsuxei512.v"),
+            Self::Vsuxei1024V => write!(f, "vsuxei1024.v"),
+            Self::Vsoxei8V => write!(f, "vsoxei8.v"),
+            Self::Vsoxei16V => write!(f, "vsoxei16.v"),
+            Self::Vsoxei32V => write!(f, "vsoxei32.v"),
+            Self::Vsoxei64V => write!(f, "vsoxei64.v"),
+            Self::Vsoxei128V => write!(f, "vsoxei128.v"),
+            Self::Vsoxei256V => write!(f, "vsoxei256.v"),
+            Self::Vsoxei512V => write!(f, "vsoxei512.v"),
+            Self::Vsoxei1024V => write!(f, "vsoxei1024.v"),
+        }
+    }
+}
+
+/// The `NfRs1VmVs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatNfRs1VmVs3 {
+    pub op: OpcodeNfRs1VmVs3,
+    pub raw: u32,
+    pub nf: u32,
+    pub rs1: u32,
+    pub vm: u32,
+    pub vs3: u32,
+}
+
+impl FormatNfRs1VmVs3 {}
+
+/// Opcodes with the `NfRs1VmVs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeNfRs1VmVs3 {
+    Vse8V,
+    Vse16V,
+    Vse32V,
+    Vse64V,
+    Vse128V,
+    Vse256V,
+    Vse512V,
+    Vse1024V,
+}
+
+impl std::fmt::Display for FormatNfRs1VmVs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " nf={:x}", self.nf)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs3={:x}", self.vs3)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeNfRs1VmVs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vse8V => write!(f, "vse8.v"),
+            Self::Vse16V => write!(f, "vse16.v"),
+            Self::Vse32V => write!(f, "vse32.v"),
+            Self::Vse64V => write!(f, "vse64.v"),
+            Self::Vse128V => write!(f, "vse128.v"),
+            Self::Vse256V => write!(f, "vse256.v"),
+            Self::Vse512V => write!(f, "vse512.v"),
+            Self::Vse1024V => write!(f, "vse1024.v"),
         }
     }
 }
@@ -980,10 +1416,6 @@ pub enum OpcodeRdRmRs1Rs2 {
     FsubH,
     FmulH,
     FdivH,
-    FmulexSH,
-    FmacexSH,
-    FmulexSB,
-    FmacexSB,
 }
 
 impl std::fmt::Display for FormatRdRmRs1Rs2 {
@@ -1016,10 +1448,6 @@ impl std::fmt::Display for OpcodeRdRmRs1Rs2 {
             Self::FsubH => write!(f, "fsub.h"),
             Self::FmulH => write!(f, "fmul.h"),
             Self::FdivH => write!(f, "fdiv.h"),
-            Self::FmulexSH => write!(f, "fmulex.s.h"),
-            Self::FmacexSH => write!(f, "fmacex.s.h"),
-            Self::FmulexSB => write!(f, "fmulex.s.b"),
-            Self::FmacexSB => write!(f, "fmacex.s.b"),
         }
     }
 }
@@ -1142,56 +1570,6 @@ pub enum OpcodeRdRs1 {
     FcvtDH,
     FcvtHB,
     FcvtBB,
-    VfsqrtS,
-    VfclassS,
-    VfmvXS,
-    VfmvSX,
-    VfcvtXS,
-    VfcvtXuS,
-    VfcvtSX,
-    VfcvtSXu,
-    VfcvtHH,
-    VfcvtuHH,
-    VfsqrtH,
-    VfclassH,
-    VfmvXH,
-    VfmvHX,
-    VfcvtXH,
-    VfcvtXuH,
-    VfcvtHX,
-    VfcvtHXu,
-    VfcvtSH,
-    VfcvtuSH,
-    VfcvtHS,
-    VfcvtuHS,
-    VfsqrtB,
-    VfmvXB,
-    VfmvBX,
-    VfclassB,
-    VfcvtXB,
-    VfcvtXuB,
-    VfcvtBX,
-    VfcvtBXu,
-    VfcvtSB,
-    VfcvtuSB,
-    VfcvtBS,
-    VfcvtuBS,
-    VfcvtHB,
-    VfcvtuHB,
-    VfcvtBH,
-    VfcvtuBH,
-    VfcvtBB,
-    VfcvtuBB,
-    VfsumS,
-    VfnsumS,
-    VfsumH,
-    VfnsumH,
-    VfsumB,
-    VfnsumB,
-    VfsumexSH,
-    VfnsumexSH,
-    VfsumexHB,
-    VfnsumexHB,
 }
 
 impl std::fmt::Display for FormatRdRs1 {
@@ -1240,56 +1618,6 @@ impl std::fmt::Display for OpcodeRdRs1 {
             Self::FcvtDH => write!(f, "fcvt.d.h"),
             Self::FcvtHB => write!(f, "fcvt.h.b"),
             Self::FcvtBB => write!(f, "fcvt.b.b"),
-            Self::VfsqrtS => write!(f, "vfsqrt.s"),
-            Self::VfclassS => write!(f, "vfclass.s"),
-            Self::VfmvXS => write!(f, "vfmv.x.s"),
-            Self::VfmvSX => write!(f, "vfmv.s.x"),
-            Self::VfcvtXS => write!(f, "vfcvt.x.s"),
-            Self::VfcvtXuS => write!(f, "vfcvt.xu.s"),
-            Self::VfcvtSX => write!(f, "vfcvt.s.x"),
-            Self::VfcvtSXu => write!(f, "vfcvt.s.xu"),
-            Self::VfcvtHH => write!(f, "vfcvt.h.h"),
-            Self::VfcvtuHH => write!(f, "vfcvtu.h.h"),
-            Self::VfsqrtH => write!(f, "vfsqrt.h"),
-            Self::VfclassH => write!(f, "vfclass.h"),
-            Self::VfmvXH => write!(f, "vfmv.x.h"),
-            Self::VfmvHX => write!(f, "vfmv.h.x"),
-            Self::VfcvtXH => write!(f, "vfcvt.x.h"),
-            Self::VfcvtXuH => write!(f, "vfcvt.xu.h"),
-            Self::VfcvtHX => write!(f, "vfcvt.h.x"),
-            Self::VfcvtHXu => write!(f, "vfcvt.h.xu"),
-            Self::VfcvtSH => write!(f, "vfcvt.s.h"),
-            Self::VfcvtuSH => write!(f, "vfcvtu.s.h"),
-            Self::VfcvtHS => write!(f, "vfcvt.h.s"),
-            Self::VfcvtuHS => write!(f, "vfcvtu.h.s"),
-            Self::VfsqrtB => write!(f, "vfsqrt.b"),
-            Self::VfmvXB => write!(f, "vfmv.x.b"),
-            Self::VfmvBX => write!(f, "vfmv.b.x"),
-            Self::VfclassB => write!(f, "vfclass.b"),
-            Self::VfcvtXB => write!(f, "vfcvt.x.b"),
-            Self::VfcvtXuB => write!(f, "vfcvt.xu.b"),
-            Self::VfcvtBX => write!(f, "vfcvt.b.x"),
-            Self::VfcvtBXu => write!(f, "vfcvt.b.xu"),
-            Self::VfcvtSB => write!(f, "vfcvt.s.b"),
-            Self::VfcvtuSB => write!(f, "vfcvtu.s.b"),
-            Self::VfcvtBS => write!(f, "vfcvt.b.s"),
-            Self::VfcvtuBS => write!(f, "vfcvtu.b.s"),
-            Self::VfcvtHB => write!(f, "vfcvt.h.b"),
-            Self::VfcvtuHB => write!(f, "vfcvtu.h.b"),
-            Self::VfcvtBH => write!(f, "vfcvt.b.h"),
-            Self::VfcvtuBH => write!(f, "vfcvtu.b.h"),
-            Self::VfcvtBB => write!(f, "vfcvt.b.b"),
-            Self::VfcvtuBB => write!(f, "vfcvtu.b.b"),
-            Self::VfsumS => write!(f, "vfsum.s"),
-            Self::VfnsumS => write!(f, "vfnsum.s"),
-            Self::VfsumH => write!(f, "vfsum.h"),
-            Self::VfnsumH => write!(f, "vfnsum.h"),
-            Self::VfsumB => write!(f, "vfsum.b"),
-            Self::VfnsumB => write!(f, "vfnsum.b"),
-            Self::VfsumexSH => write!(f, "vfsumex.s.h"),
-            Self::VfnsumexSH => write!(f, "vfnsumex.s.h"),
-            Self::VfsumexHB => write!(f, "vfsumex.h.b"),
-            Self::VfnsumexHB => write!(f, "vfnsumex.h.b"),
         }
     }
 }
@@ -1401,140 +1729,7 @@ pub enum OpcodeRdRs1Rs2 {
     FeqH,
     FltH,
     FleH,
-    VfaddS,
-    VfaddRS,
-    VfsubS,
-    VfsubRS,
-    VfmulS,
-    VfmulRS,
-    VfdivS,
-    VfdivRS,
-    VfminS,
-    VfminRS,
-    VfmaxS,
-    VfmaxRS,
-    VfmacS,
-    VfmacRS,
-    VfmreS,
-    VfmreRS,
-    VfsgnjS,
-    VfsgnjRS,
-    VfsgnjnS,
-    VfsgnjnRS,
-    VfsgnjxS,
-    VfsgnjxRS,
-    VfeqS,
-    VfeqRS,
-    VfneS,
-    VfneRS,
-    VfltS,
-    VfltRS,
-    VfgeS,
-    VfgeRS,
-    VfleS,
-    VfleRS,
-    VfgtS,
-    VfgtRS,
-    VfcpkaSS,
-    VfcpkbSS,
-    VfcpkcSS,
-    VfcpkdSS,
-    VfcpkaSD,
-    VfcpkbSD,
-    VfcpkcSD,
-    VfcpkdSD,
-    VfaddH,
-    VfaddRH,
-    VfsubH,
-    VfsubRH,
-    VfmulH,
-    VfmulRH,
-    VfdivH,
-    VfdivRH,
-    VfminH,
-    VfminRH,
-    VfmaxH,
-    VfmaxRH,
-    VfmacH,
-    VfmacRH,
-    VfmreH,
-    VfmreRH,
-    VfsgnjH,
-    VfsgnjRH,
-    VfsgnjnH,
-    VfsgnjnRH,
-    VfsgnjxH,
-    VfsgnjxRH,
-    VfeqH,
-    VfeqRH,
-    VfneH,
-    VfneRH,
-    VfltH,
-    VfltRH,
-    VfgeH,
-    VfgeRH,
-    VfleH,
-    VfleRH,
-    VfgtH,
-    VfgtRH,
-    VfcpkaHS,
-    VfcpkbHS,
-    VfcpkcHS,
-    VfcpkdHS,
-    VfcpkaHD,
-    VfcpkbHD,
-    VfcpkcHD,
-    VfcpkdHD,
-    VfaddB,
-    VfaddRB,
-    VfsubB,
-    VfsubRB,
-    VfmulB,
-    VfmulRB,
-    VfdivB,
-    VfdivRB,
-    VfminB,
-    VfminRB,
-    VfmaxB,
-    VfmaxRB,
-    VfmacB,
-    VfmacRB,
-    VfmreB,
-    VfmreRB,
-    VfsgnjB,
-    VfsgnjRB,
-    VfsgnjnB,
-    VfsgnjnRB,
-    VfsgnjxB,
-    VfsgnjxRB,
-    VfeqB,
-    VfeqRB,
-    VfneB,
-    VfneRB,
-    VfltB,
-    VfltRB,
-    VfgeB,
-    VfgeRB,
-    VfleB,
-    VfleRB,
-    VfgtB,
-    VfgtRB,
-    VfcpkaBS,
-    VfcpkbBS,
-    VfcpkcBS,
-    VfcpkdBS,
-    VfcpkaBD,
-    VfcpkbBD,
-    VfcpkcBD,
-    VfcpkdBD,
-    VfdotpexSH,
-    VfdotpexSRH,
-    VfndotpexSH,
-    VfndotpexSRH,
-    VfdotpexHB,
-    VfdotpexHRB,
-    VfndotpexHB,
-    VfndotpexHRB,
+    Vsetvl,
 }
 
 impl std::fmt::Display for FormatRdRs1Rs2 {
@@ -1642,140 +1837,7 @@ impl std::fmt::Display for OpcodeRdRs1Rs2 {
             Self::FeqH => write!(f, "feq.h"),
             Self::FltH => write!(f, "flt.h"),
             Self::FleH => write!(f, "fle.h"),
-            Self::VfaddS => write!(f, "vfadd.s"),
-            Self::VfaddRS => write!(f, "vfadd.r.s"),
-            Self::VfsubS => write!(f, "vfsub.s"),
-            Self::VfsubRS => write!(f, "vfsub.r.s"),
-            Self::VfmulS => write!(f, "vfmul.s"),
-            Self::VfmulRS => write!(f, "vfmul.r.s"),
-            Self::VfdivS => write!(f, "vfdiv.s"),
-            Self::VfdivRS => write!(f, "vfdiv.r.s"),
-            Self::VfminS => write!(f, "vfmin.s"),
-            Self::VfminRS => write!(f, "vfmin.r.s"),
-            Self::VfmaxS => write!(f, "vfmax.s"),
-            Self::VfmaxRS => write!(f, "vfmax.r.s"),
-            Self::VfmacS => write!(f, "vfmac.s"),
-            Self::VfmacRS => write!(f, "vfmac.r.s"),
-            Self::VfmreS => write!(f, "vfmre.s"),
-            Self::VfmreRS => write!(f, "vfmre.r.s"),
-            Self::VfsgnjS => write!(f, "vfsgnj.s"),
-            Self::VfsgnjRS => write!(f, "vfsgnj.r.s"),
-            Self::VfsgnjnS => write!(f, "vfsgnjn.s"),
-            Self::VfsgnjnRS => write!(f, "vfsgnjn.r.s"),
-            Self::VfsgnjxS => write!(f, "vfsgnjx.s"),
-            Self::VfsgnjxRS => write!(f, "vfsgnjx.r.s"),
-            Self::VfeqS => write!(f, "vfeq.s"),
-            Self::VfeqRS => write!(f, "vfeq.r.s"),
-            Self::VfneS => write!(f, "vfne.s"),
-            Self::VfneRS => write!(f, "vfne.r.s"),
-            Self::VfltS => write!(f, "vflt.s"),
-            Self::VfltRS => write!(f, "vflt.r.s"),
-            Self::VfgeS => write!(f, "vfge.s"),
-            Self::VfgeRS => write!(f, "vfge.r.s"),
-            Self::VfleS => write!(f, "vfle.s"),
-            Self::VfleRS => write!(f, "vfle.r.s"),
-            Self::VfgtS => write!(f, "vfgt.s"),
-            Self::VfgtRS => write!(f, "vfgt.r.s"),
-            Self::VfcpkaSS => write!(f, "vfcpka.s.s"),
-            Self::VfcpkbSS => write!(f, "vfcpkb.s.s"),
-            Self::VfcpkcSS => write!(f, "vfcpkc.s.s"),
-            Self::VfcpkdSS => write!(f, "vfcpkd.s.s"),
-            Self::VfcpkaSD => write!(f, "vfcpka.s.d"),
-            Self::VfcpkbSD => write!(f, "vfcpkb.s.d"),
-            Self::VfcpkcSD => write!(f, "vfcpkc.s.d"),
-            Self::VfcpkdSD => write!(f, "vfcpkd.s.d"),
-            Self::VfaddH => write!(f, "vfadd.h"),
-            Self::VfaddRH => write!(f, "vfadd.r.h"),
-            Self::VfsubH => write!(f, "vfsub.h"),
-            Self::VfsubRH => write!(f, "vfsub.r.h"),
-            Self::VfmulH => write!(f, "vfmul.h"),
-            Self::VfmulRH => write!(f, "vfmul.r.h"),
-            Self::VfdivH => write!(f, "vfdiv.h"),
-            Self::VfdivRH => write!(f, "vfdiv.r.h"),
-            Self::VfminH => write!(f, "vfmin.h"),
-            Self::VfminRH => write!(f, "vfmin.r.h"),
-            Self::VfmaxH => write!(f, "vfmax.h"),
-            Self::VfmaxRH => write!(f, "vfmax.r.h"),
-            Self::VfmacH => write!(f, "vfmac.h"),
-            Self::VfmacRH => write!(f, "vfmac.r.h"),
-            Self::VfmreH => write!(f, "vfmre.h"),
-            Self::VfmreRH => write!(f, "vfmre.r.h"),
-            Self::VfsgnjH => write!(f, "vfsgnj.h"),
-            Self::VfsgnjRH => write!(f, "vfsgnj.r.h"),
-            Self::VfsgnjnH => write!(f, "vfsgnjn.h"),
-            Self::VfsgnjnRH => write!(f, "vfsgnjn.r.h"),
-            Self::VfsgnjxH => write!(f, "vfsgnjx.h"),
-            Self::VfsgnjxRH => write!(f, "vfsgnjx.r.h"),
-            Self::VfeqH => write!(f, "vfeq.h"),
-            Self::VfeqRH => write!(f, "vfeq.r.h"),
-            Self::VfneH => write!(f, "vfne.h"),
-            Self::VfneRH => write!(f, "vfne.r.h"),
-            Self::VfltH => write!(f, "vflt.h"),
-            Self::VfltRH => write!(f, "vflt.r.h"),
-            Self::VfgeH => write!(f, "vfge.h"),
-            Self::VfgeRH => write!(f, "vfge.r.h"),
-            Self::VfleH => write!(f, "vfle.h"),
-            Self::VfleRH => write!(f, "vfle.r.h"),
-            Self::VfgtH => write!(f, "vfgt.h"),
-            Self::VfgtRH => write!(f, "vfgt.r.h"),
-            Self::VfcpkaHS => write!(f, "vfcpka.h.s"),
-            Self::VfcpkbHS => write!(f, "vfcpkb.h.s"),
-            Self::VfcpkcHS => write!(f, "vfcpkc.h.s"),
-            Self::VfcpkdHS => write!(f, "vfcpkd.h.s"),
-            Self::VfcpkaHD => write!(f, "vfcpka.h.d"),
-            Self::VfcpkbHD => write!(f, "vfcpkb.h.d"),
-            Self::VfcpkcHD => write!(f, "vfcpkc.h.d"),
-            Self::VfcpkdHD => write!(f, "vfcpkd.h.d"),
-            Self::VfaddB => write!(f, "vfadd.b"),
-            Self::VfaddRB => write!(f, "vfadd.r.b"),
-            Self::VfsubB => write!(f, "vfsub.b"),
-            Self::VfsubRB => write!(f, "vfsub.r.b"),
-            Self::VfmulB => write!(f, "vfmul.b"),
-            Self::VfmulRB => write!(f, "vfmul.r.b"),
-            Self::VfdivB => write!(f, "vfdiv.b"),
-            Self::VfdivRB => write!(f, "vfdiv.r.b"),
-            Self::VfminB => write!(f, "vfmin.b"),
-            Self::VfminRB => write!(f, "vfmin.r.b"),
-            Self::VfmaxB => write!(f, "vfmax.b"),
-            Self::VfmaxRB => write!(f, "vfmax.r.b"),
-            Self::VfmacB => write!(f, "vfmac.b"),
-            Self::VfmacRB => write!(f, "vfmac.r.b"),
-            Self::VfmreB => write!(f, "vfmre.b"),
-            Self::VfmreRB => write!(f, "vfmre.r.b"),
-            Self::VfsgnjB => write!(f, "vfsgnj.b"),
-            Self::VfsgnjRB => write!(f, "vfsgnj.r.b"),
-            Self::VfsgnjnB => write!(f, "vfsgnjn.b"),
-            Self::VfsgnjnRB => write!(f, "vfsgnjn.r.b"),
-            Self::VfsgnjxB => write!(f, "vfsgnjx.b"),
-            Self::VfsgnjxRB => write!(f, "vfsgnjx.r.b"),
-            Self::VfeqB => write!(f, "vfeq.b"),
-            Self::VfeqRB => write!(f, "vfeq.r.b"),
-            Self::VfneB => write!(f, "vfne.b"),
-            Self::VfneRB => write!(f, "vfne.r.b"),
-            Self::VfltB => write!(f, "vflt.b"),
-            Self::VfltRB => write!(f, "vflt.r.b"),
-            Self::VfgeB => write!(f, "vfge.b"),
-            Self::VfgeRB => write!(f, "vfge.r.b"),
-            Self::VfleB => write!(f, "vfle.b"),
-            Self::VfleRB => write!(f, "vfle.r.b"),
-            Self::VfgtB => write!(f, "vfgt.b"),
-            Self::VfgtRB => write!(f, "vfgt.r.b"),
-            Self::VfcpkaBS => write!(f, "vfcpka.b.s"),
-            Self::VfcpkbBS => write!(f, "vfcpkb.b.s"),
-            Self::VfcpkcBS => write!(f, "vfcpkc.b.s"),
-            Self::VfcpkdBS => write!(f, "vfcpkd.b.s"),
-            Self::VfcpkaBD => write!(f, "vfcpka.b.d"),
-            Self::VfcpkbBD => write!(f, "vfcpkb.b.d"),
-            Self::VfcpkcBD => write!(f, "vfcpkc.b.d"),
-            Self::VfcpkdBD => write!(f, "vfcpkd.b.d"),
-            Self::VfdotpexSH => write!(f, "vfdotpex.s.h"),
-            Self::VfdotpexSRH => write!(f, "vfdotpex.s.r.h"),
-            Self::VfndotpexSH => write!(f, "vfndotpex.s.h"),
-            Self::VfndotpexSRH => write!(f, "vfndotpex.s.r.h"),
-            Self::VfdotpexHB => write!(f, "vfdotpex.h.b"),
-            Self::VfdotpexHRB => write!(f, "vfdotpex.h.r.b"),
-            Self::VfndotpexHB => write!(f, "vfndotpex.h.b"),
-            Self::VfndotpexHRB => write!(f, "vfndotpex.h.r.b"),
+            Self::Vsetvl => write!(f, "vsetvl"),
         }
     }
 }
@@ -1964,6 +2026,42 @@ impl std::fmt::Display for OpcodeRdRs1Shamtw {
     }
 }
 
+/// The `RdRs1Zimm11` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRdRs1Zimm11 {
+    pub op: OpcodeRdRs1Zimm11,
+    pub raw: u32,
+    pub rd: u32,
+    pub rs1: u32,
+    pub zimm11: u32,
+}
+
+impl FormatRdRs1Zimm11 {}
+
+/// Opcodes with the `RdRs1Zimm11` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRdRs1Zimm11 {
+    Vsetvli,
+}
+
+impl std::fmt::Display for FormatRdRs1Zimm11 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rd={:x}", self.rd)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " zimm11={:x}", self.zimm11)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRdRs1Zimm11 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vsetvli => write!(f, "vsetvli"),
+        }
+    }
+}
+
 /// The `RdRs2` instruction format.
 #[derive(Debug, Copy, Clone)]
 pub struct FormatRdRs2 {
@@ -1996,6 +2094,116 @@ impl std::fmt::Display for OpcodeRdRs2 {
         match self {
             Self::Dmstat => write!(f, "dmstat"),
             Self::Scfgr => write!(f, "scfgr"),
+        }
+    }
+}
+
+/// The `RdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRdVmVs2 {
+    pub op: OpcodeRdVmVs2,
+    pub raw: u32,
+    pub rd: u32,
+    pub vm: u32,
+    pub vs2: u32,
+}
+
+impl FormatRdVmVs2 {}
+
+/// Opcodes with the `RdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRdVmVs2 {
+    VcpopM,
+    VfirstM,
+}
+
+impl std::fmt::Display for FormatRdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rd={:x}", self.rd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VcpopM => write!(f, "vcpop.m"),
+            Self::VfirstM => write!(f, "vfirst.m"),
+        }
+    }
+}
+
+/// The `RdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRdVs2 {
+    pub op: OpcodeRdVs2,
+    pub raw: u32,
+    pub rd: u32,
+    pub vs2: u32,
+}
+
+impl FormatRdVs2 {}
+
+/// Opcodes with the `RdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRdVs2 {
+    VfmvFS,
+    VmvXS,
+}
+
+impl std::fmt::Display for FormatRdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rd={:x}", self.rd)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VfmvFS => write!(f, "vfmv.f.s"),
+            Self::VmvXS => write!(f, "vmv.x.s"),
+        }
+    }
+}
+
+/// The `RdZimmZimm10` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRdZimmZimm10 {
+    pub op: OpcodeRdZimmZimm10,
+    pub raw: u32,
+    pub rd: u32,
+    pub zimm: u32,
+    pub zimm10: u32,
+}
+
+impl FormatRdZimmZimm10 {}
+
+/// Opcodes with the `RdZimmZimm10` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRdZimmZimm10 {
+    Vsetivli,
+}
+
+impl std::fmt::Display for FormatRdZimmZimm10 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rd={:x}", self.rd)?;
+        write!(f, " zimm={:x}", self.zimm)?;
+        write!(f, " zimm10={:x}", self.zimm10)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRdZimmZimm10 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vsetivli => write!(f, "vsetivli"),
         }
     }
 }
@@ -2086,6 +2294,1220 @@ impl std::fmt::Display for OpcodeRs1Rs2 {
     }
 }
 
+/// The `Rs1Vd` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRs1Vd {
+    pub op: OpcodeRs1Vd,
+    pub raw: u32,
+    pub rs1: u32,
+    pub vd: u32,
+}
+
+impl FormatRs1Vd {}
+
+/// Opcodes with the `Rs1Vd` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRs1Vd {
+    VlmV,
+    Vl1re8V,
+    Vl1re16V,
+    Vl1re32V,
+    Vl1re64V,
+    Vl2re8V,
+    Vl2re16V,
+    Vl2re32V,
+    Vl2re64V,
+    Vl4re8V,
+    Vl4re16V,
+    Vl4re32V,
+    Vl4re64V,
+    Vl8re8V,
+    Vl8re16V,
+    Vl8re32V,
+    Vl8re64V,
+    VfmvSF,
+    VfmvVF,
+    VmvVX,
+    VmvSX,
+}
+
+impl std::fmt::Display for FormatRs1Vd {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vd={:x}", self.vd)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRs1Vd {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VlmV => write!(f, "vlm.v"),
+            Self::Vl1re8V => write!(f, "vl1re8.v"),
+            Self::Vl1re16V => write!(f, "vl1re16.v"),
+            Self::Vl1re32V => write!(f, "vl1re32.v"),
+            Self::Vl1re64V => write!(f, "vl1re64.v"),
+            Self::Vl2re8V => write!(f, "vl2re8.v"),
+            Self::Vl2re16V => write!(f, "vl2re16.v"),
+            Self::Vl2re32V => write!(f, "vl2re32.v"),
+            Self::Vl2re64V => write!(f, "vl2re64.v"),
+            Self::Vl4re8V => write!(f, "vl4re8.v"),
+            Self::Vl4re16V => write!(f, "vl4re16.v"),
+            Self::Vl4re32V => write!(f, "vl4re32.v"),
+            Self::Vl4re64V => write!(f, "vl4re64.v"),
+            Self::Vl8re8V => write!(f, "vl8re8.v"),
+            Self::Vl8re16V => write!(f, "vl8re16.v"),
+            Self::Vl8re32V => write!(f, "vl8re32.v"),
+            Self::Vl8re64V => write!(f, "vl8re64.v"),
+            Self::VfmvSF => write!(f, "vfmv.s.f"),
+            Self::VfmvVF => write!(f, "vfmv.v.f"),
+            Self::VmvVX => write!(f, "vmv.v.x"),
+            Self::VmvSX => write!(f, "vmv.s.x"),
+        }
+    }
+}
+
+/// The `Rs1VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRs1VdVmVs2 {
+    pub op: OpcodeRs1VdVmVs2,
+    pub raw: u32,
+    pub rs1: u32,
+    pub vd: u32,
+    pub vm: u32,
+    pub vs2: u32,
+}
+
+impl FormatRs1VdVmVs2 {}
+
+/// Opcodes with the `Rs1VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRs1VdVmVs2 {
+    VfaddVf,
+    VfsubVf,
+    VfminVf,
+    VfmaxVf,
+    VfsgnjVf,
+    VfsgnjnVf,
+    VfsgnjxVf,
+    Vfslide1upVf,
+    Vfslide1downVf,
+    VmfeqVf,
+    VmfleVf,
+    VmfltVf,
+    VmfneVf,
+    VmfgtVf,
+    VmfgeVf,
+    VfdivVf,
+    VfrdivVf,
+    VfmulVf,
+    VfrsubVf,
+    VfmaddVf,
+    VfnmaddVf,
+    VfmsubVf,
+    VfnmsubVf,
+    VfmaccVf,
+    VfnmaccVf,
+    VfmsacVf,
+    VfnmsacVf,
+    VfwaddVf,
+    VfwsubVf,
+    VfwaddWf,
+    VfwsubWf,
+    VfwmulVf,
+    VfwdotpVf,
+    VfwmaccVf,
+    VfwnmaccVf,
+    VfwmsacVf,
+    VfwnmsacVf,
+    VaddVx,
+    VsubVx,
+    VrsubVx,
+    VminuVx,
+    VminVx,
+    VmaxuVx,
+    VmaxVx,
+    VandVx,
+    VorVx,
+    VxorVx,
+    VrgatherVx,
+    VslideupVx,
+    VslidedownVx,
+    VmseqVx,
+    VmsneVx,
+    VmsltuVx,
+    VmsltVx,
+    VmsleuVx,
+    VmsleVx,
+    VmsgtuVx,
+    VmsgtVx,
+    VsadduVx,
+    VsaddVx,
+    VssubuVx,
+    VssubVx,
+    VsllVx,
+    VsmulVx,
+    VsrlVx,
+    VsraVx,
+    VssrlVx,
+    VssraVx,
+    VnsrlWx,
+    VnsraWx,
+    VnclipuWx,
+    VnclipWx,
+    VaadduVx,
+    VaaddVx,
+    VasubuVx,
+    VasubVx,
+    Vslide1upVx,
+    Vslide1downVx,
+    VdivuVx,
+    VdivVx,
+    VremuVx,
+    VremVx,
+    VmulhuVx,
+    VmulVx,
+    VmulhsuVx,
+    VmulhVx,
+    VmaddVx,
+    VnmsubVx,
+    VmaccVx,
+    VnmsacVx,
+    VwadduVx,
+    VwaddVx,
+    VwsubuVx,
+    VwsubVx,
+    VwadduWx,
+    VwaddWx,
+    VwsubuWx,
+    VwsubWx,
+    VwmuluVx,
+    VwmulsuVx,
+    VwmulVx,
+    VwmaccuVx,
+    VwmaccVx,
+    VwmaccusVx,
+    VwmaccsuVx,
+}
+
+impl std::fmt::Display for FormatRs1VdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRs1VdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VfaddVf => write!(f, "vfadd.vf"),
+            Self::VfsubVf => write!(f, "vfsub.vf"),
+            Self::VfminVf => write!(f, "vfmin.vf"),
+            Self::VfmaxVf => write!(f, "vfmax.vf"),
+            Self::VfsgnjVf => write!(f, "vfsgnj.vf"),
+            Self::VfsgnjnVf => write!(f, "vfsgnjn.vf"),
+            Self::VfsgnjxVf => write!(f, "vfsgnjx.vf"),
+            Self::Vfslide1upVf => write!(f, "vfslide1up.vf"),
+            Self::Vfslide1downVf => write!(f, "vfslide1down.vf"),
+            Self::VmfeqVf => write!(f, "vmfeq.vf"),
+            Self::VmfleVf => write!(f, "vmfle.vf"),
+            Self::VmfltVf => write!(f, "vmflt.vf"),
+            Self::VmfneVf => write!(f, "vmfne.vf"),
+            Self::VmfgtVf => write!(f, "vmfgt.vf"),
+            Self::VmfgeVf => write!(f, "vmfge.vf"),
+            Self::VfdivVf => write!(f, "vfdiv.vf"),
+            Self::VfrdivVf => write!(f, "vfrdiv.vf"),
+            Self::VfmulVf => write!(f, "vfmul.vf"),
+            Self::VfrsubVf => write!(f, "vfrsub.vf"),
+            Self::VfmaddVf => write!(f, "vfmadd.vf"),
+            Self::VfnmaddVf => write!(f, "vfnmadd.vf"),
+            Self::VfmsubVf => write!(f, "vfmsub.vf"),
+            Self::VfnmsubVf => write!(f, "vfnmsub.vf"),
+            Self::VfmaccVf => write!(f, "vfmacc.vf"),
+            Self::VfnmaccVf => write!(f, "vfnmacc.vf"),
+            Self::VfmsacVf => write!(f, "vfmsac.vf"),
+            Self::VfnmsacVf => write!(f, "vfnmsac.vf"),
+            Self::VfwaddVf => write!(f, "vfwadd.vf"),
+            Self::VfwsubVf => write!(f, "vfwsub.vf"),
+            Self::VfwaddWf => write!(f, "vfwadd.wf"),
+            Self::VfwsubWf => write!(f, "vfwsub.wf"),
+            Self::VfwmulVf => write!(f, "vfwmul.vf"),
+            Self::VfwdotpVf => write!(f, "vfwdotp.vf"),
+            Self::VfwmaccVf => write!(f, "vfwmacc.vf"),
+            Self::VfwnmaccVf => write!(f, "vfwnmacc.vf"),
+            Self::VfwmsacVf => write!(f, "vfwmsac.vf"),
+            Self::VfwnmsacVf => write!(f, "vfwnmsac.vf"),
+            Self::VaddVx => write!(f, "vadd.vx"),
+            Self::VsubVx => write!(f, "vsub.vx"),
+            Self::VrsubVx => write!(f, "vrsub.vx"),
+            Self::VminuVx => write!(f, "vminu.vx"),
+            Self::VminVx => write!(f, "vmin.vx"),
+            Self::VmaxuVx => write!(f, "vmaxu.vx"),
+            Self::VmaxVx => write!(f, "vmax.vx"),
+            Self::VandVx => write!(f, "vand.vx"),
+            Self::VorVx => write!(f, "vor.vx"),
+            Self::VxorVx => write!(f, "vxor.vx"),
+            Self::VrgatherVx => write!(f, "vrgather.vx"),
+            Self::VslideupVx => write!(f, "vslideup.vx"),
+            Self::VslidedownVx => write!(f, "vslidedown.vx"),
+            Self::VmseqVx => write!(f, "vmseq.vx"),
+            Self::VmsneVx => write!(f, "vmsne.vx"),
+            Self::VmsltuVx => write!(f, "vmsltu.vx"),
+            Self::VmsltVx => write!(f, "vmslt.vx"),
+            Self::VmsleuVx => write!(f, "vmsleu.vx"),
+            Self::VmsleVx => write!(f, "vmsle.vx"),
+            Self::VmsgtuVx => write!(f, "vmsgtu.vx"),
+            Self::VmsgtVx => write!(f, "vmsgt.vx"),
+            Self::VsadduVx => write!(f, "vsaddu.vx"),
+            Self::VsaddVx => write!(f, "vsadd.vx"),
+            Self::VssubuVx => write!(f, "vssubu.vx"),
+            Self::VssubVx => write!(f, "vssub.vx"),
+            Self::VsllVx => write!(f, "vsll.vx"),
+            Self::VsmulVx => write!(f, "vsmul.vx"),
+            Self::VsrlVx => write!(f, "vsrl.vx"),
+            Self::VsraVx => write!(f, "vsra.vx"),
+            Self::VssrlVx => write!(f, "vssrl.vx"),
+            Self::VssraVx => write!(f, "vssra.vx"),
+            Self::VnsrlWx => write!(f, "vnsrl.wx"),
+            Self::VnsraWx => write!(f, "vnsra.wx"),
+            Self::VnclipuWx => write!(f, "vnclipu.wx"),
+            Self::VnclipWx => write!(f, "vnclip.wx"),
+            Self::VaadduVx => write!(f, "vaaddu.vx"),
+            Self::VaaddVx => write!(f, "vaadd.vx"),
+            Self::VasubuVx => write!(f, "vasubu.vx"),
+            Self::VasubVx => write!(f, "vasub.vx"),
+            Self::Vslide1upVx => write!(f, "vslide1up.vx"),
+            Self::Vslide1downVx => write!(f, "vslide1down.vx"),
+            Self::VdivuVx => write!(f, "vdivu.vx"),
+            Self::VdivVx => write!(f, "vdiv.vx"),
+            Self::VremuVx => write!(f, "vremu.vx"),
+            Self::VremVx => write!(f, "vrem.vx"),
+            Self::VmulhuVx => write!(f, "vmulhu.vx"),
+            Self::VmulVx => write!(f, "vmul.vx"),
+            Self::VmulhsuVx => write!(f, "vmulhsu.vx"),
+            Self::VmulhVx => write!(f, "vmulh.vx"),
+            Self::VmaddVx => write!(f, "vmadd.vx"),
+            Self::VnmsubVx => write!(f, "vnmsub.vx"),
+            Self::VmaccVx => write!(f, "vmacc.vx"),
+            Self::VnmsacVx => write!(f, "vnmsac.vx"),
+            Self::VwadduVx => write!(f, "vwaddu.vx"),
+            Self::VwaddVx => write!(f, "vwadd.vx"),
+            Self::VwsubuVx => write!(f, "vwsubu.vx"),
+            Self::VwsubVx => write!(f, "vwsub.vx"),
+            Self::VwadduWx => write!(f, "vwaddu.wx"),
+            Self::VwaddWx => write!(f, "vwadd.wx"),
+            Self::VwsubuWx => write!(f, "vwsubu.wx"),
+            Self::VwsubWx => write!(f, "vwsub.wx"),
+            Self::VwmuluVx => write!(f, "vwmulu.vx"),
+            Self::VwmulsuVx => write!(f, "vwmulsu.vx"),
+            Self::VwmulVx => write!(f, "vwmul.vx"),
+            Self::VwmaccuVx => write!(f, "vwmaccu.vx"),
+            Self::VwmaccVx => write!(f, "vwmacc.vx"),
+            Self::VwmaccusVx => write!(f, "vwmaccus.vx"),
+            Self::VwmaccsuVx => write!(f, "vwmaccsu.vx"),
+        }
+    }
+}
+
+/// The `Rs1VdVmVs2Wd` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRs1VdVmVs2Wd {
+    pub op: OpcodeRs1VdVmVs2Wd,
+    pub raw: u32,
+    pub rs1: u32,
+    pub vd: u32,
+    pub vm: u32,
+    pub vs2: u32,
+    pub wd: u32,
+}
+
+impl FormatRs1VdVmVs2Wd {}
+
+/// Opcodes with the `Rs1VdVmVs2Wd` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRs1VdVmVs2Wd {
+    Vamoswapei8V,
+    Vamoaddei8V,
+    Vamoxorei8V,
+    Vamoandei8V,
+    Vamoorei8V,
+    Vamominei8V,
+    Vamomaxei8V,
+    Vamominuei8V,
+    Vamomaxuei8V,
+    Vamoswapei16V,
+    Vamoaddei16V,
+    Vamoxorei16V,
+    Vamoandei16V,
+    Vamoorei16V,
+    Vamominei16V,
+    Vamomaxei16V,
+    Vamominuei16V,
+    Vamomaxuei16V,
+    Vamoswapei32V,
+    Vamoaddei32V,
+    Vamoxorei32V,
+    Vamoandei32V,
+    Vamoorei32V,
+    Vamominei32V,
+    Vamomaxei32V,
+    Vamominuei32V,
+    Vamomaxuei32V,
+    Vamoswapei64V,
+    Vamoaddei64V,
+    Vamoxorei64V,
+    Vamoandei64V,
+    Vamoorei64V,
+    Vamominei64V,
+    Vamomaxei64V,
+    Vamominuei64V,
+    Vamomaxuei64V,
+}
+
+impl std::fmt::Display for FormatRs1VdVmVs2Wd {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        write!(f, " wd={:x}", self.wd)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRs1VdVmVs2Wd {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vamoswapei8V => write!(f, "vamoswapei8.v"),
+            Self::Vamoaddei8V => write!(f, "vamoaddei8.v"),
+            Self::Vamoxorei8V => write!(f, "vamoxorei8.v"),
+            Self::Vamoandei8V => write!(f, "vamoandei8.v"),
+            Self::Vamoorei8V => write!(f, "vamoorei8.v"),
+            Self::Vamominei8V => write!(f, "vamominei8.v"),
+            Self::Vamomaxei8V => write!(f, "vamomaxei8.v"),
+            Self::Vamominuei8V => write!(f, "vamominuei8.v"),
+            Self::Vamomaxuei8V => write!(f, "vamomaxuei8.v"),
+            Self::Vamoswapei16V => write!(f, "vamoswapei16.v"),
+            Self::Vamoaddei16V => write!(f, "vamoaddei16.v"),
+            Self::Vamoxorei16V => write!(f, "vamoxorei16.v"),
+            Self::Vamoandei16V => write!(f, "vamoandei16.v"),
+            Self::Vamoorei16V => write!(f, "vamoorei16.v"),
+            Self::Vamominei16V => write!(f, "vamominei16.v"),
+            Self::Vamomaxei16V => write!(f, "vamomaxei16.v"),
+            Self::Vamominuei16V => write!(f, "vamominuei16.v"),
+            Self::Vamomaxuei16V => write!(f, "vamomaxuei16.v"),
+            Self::Vamoswapei32V => write!(f, "vamoswapei32.v"),
+            Self::Vamoaddei32V => write!(f, "vamoaddei32.v"),
+            Self::Vamoxorei32V => write!(f, "vamoxorei32.v"),
+            Self::Vamoandei32V => write!(f, "vamoandei32.v"),
+            Self::Vamoorei32V => write!(f, "vamoorei32.v"),
+            Self::Vamominei32V => write!(f, "vamominei32.v"),
+            Self::Vamomaxei32V => write!(f, "vamomaxei32.v"),
+            Self::Vamominuei32V => write!(f, "vamominuei32.v"),
+            Self::Vamomaxuei32V => write!(f, "vamomaxuei32.v"),
+            Self::Vamoswapei64V => write!(f, "vamoswapei64.v"),
+            Self::Vamoaddei64V => write!(f, "vamoaddei64.v"),
+            Self::Vamoxorei64V => write!(f, "vamoxorei64.v"),
+            Self::Vamoandei64V => write!(f, "vamoandei64.v"),
+            Self::Vamoorei64V => write!(f, "vamoorei64.v"),
+            Self::Vamominei64V => write!(f, "vamominei64.v"),
+            Self::Vamomaxei64V => write!(f, "vamomaxei64.v"),
+            Self::Vamominuei64V => write!(f, "vamominuei64.v"),
+            Self::Vamomaxuei64V => write!(f, "vamomaxuei64.v"),
+        }
+    }
+}
+
+/// The `Rs1VdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRs1VdVs2 {
+    pub op: OpcodeRs1VdVs2,
+    pub raw: u32,
+    pub rs1: u32,
+    pub vd: u32,
+    pub vs2: u32,
+}
+
+impl FormatRs1VdVs2 {}
+
+/// Opcodes with the `Rs1VdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRs1VdVs2 {
+    VfmergeVfm,
+    VadcVxm,
+    VmadcVxm,
+    VmadcVx,
+    VsbcVxm,
+    VmsbcVxm,
+    VmsbcVx,
+    VmergeVxm,
+}
+
+impl std::fmt::Display for FormatRs1VdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRs1VdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VfmergeVfm => write!(f, "vfmerge.vfm"),
+            Self::VadcVxm => write!(f, "vadc.vxm"),
+            Self::VmadcVxm => write!(f, "vmadc.vxm"),
+            Self::VmadcVx => write!(f, "vmadc.vx"),
+            Self::VsbcVxm => write!(f, "vsbc.vxm"),
+            Self::VmsbcVxm => write!(f, "vmsbc.vxm"),
+            Self::VmsbcVx => write!(f, "vmsbc.vx"),
+            Self::VmergeVxm => write!(f, "vmerge.vxm"),
+        }
+    }
+}
+
+/// The `Rs1Vs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatRs1Vs3 {
+    pub op: OpcodeRs1Vs3,
+    pub raw: u32,
+    pub rs1: u32,
+    pub vs3: u32,
+}
+
+impl FormatRs1Vs3 {}
+
+/// Opcodes with the `Rs1Vs3` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeRs1Vs3 {
+    VsmV,
+    Vs1rV,
+    Vs2rV,
+    Vs4rV,
+    Vs8rV,
+}
+
+impl std::fmt::Display for FormatRs1Vs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " rs1={:x}", self.rs1)?;
+        write!(f, " vs3={:x}", self.vs3)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeRs1Vs3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VsmV => write!(f, "vsm.v"),
+            Self::Vs1rV => write!(f, "vs1r.v"),
+            Self::Vs2rV => write!(f, "vs2r.v"),
+            Self::Vs4rV => write!(f, "vs4r.v"),
+            Self::Vs8rV => write!(f, "vs8r.v"),
+        }
+    }
+}
+
+/// The `Simm5Vd` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatSimm5Vd {
+    pub op: OpcodeSimm5Vd,
+    pub raw: u32,
+    pub simm5: u32,
+    pub vd: u32,
+}
+
+impl FormatSimm5Vd {}
+
+/// Opcodes with the `Simm5Vd` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeSimm5Vd {
+    VmvVI,
+}
+
+impl std::fmt::Display for FormatSimm5Vd {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " simm5={:x}", self.simm5)?;
+        write!(f, " vd={:x}", self.vd)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeSimm5Vd {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VmvVI => write!(f, "vmv.v.i"),
+        }
+    }
+}
+
+/// The `Simm5VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatSimm5VdVmVs2 {
+    pub op: OpcodeSimm5VdVmVs2,
+    pub raw: u32,
+    pub simm5: u32,
+    pub vd: u32,
+    pub vm: u32,
+    pub vs2: u32,
+}
+
+impl FormatSimm5VdVmVs2 {}
+
+/// Opcodes with the `Simm5VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeSimm5VdVmVs2 {
+    VaddVi,
+    VrsubVi,
+    VandVi,
+    VorVi,
+    VxorVi,
+    VrgatherVi,
+    VslideupVi,
+    VslidedownVi,
+    VmseqVi,
+    VmsneVi,
+    VmsleuVi,
+    VmsleVi,
+    VmsgtuVi,
+    VmsgtVi,
+    VsadduVi,
+    VsaddVi,
+    VsllVi,
+    VsrlVi,
+    VsraVi,
+    VssrlVi,
+    VssraVi,
+    VnsrlWi,
+    VnsraWi,
+    VnclipuWi,
+    VnclipWi,
+}
+
+impl std::fmt::Display for FormatSimm5VdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " simm5={:x}", self.simm5)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeSimm5VdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VaddVi => write!(f, "vadd.vi"),
+            Self::VrsubVi => write!(f, "vrsub.vi"),
+            Self::VandVi => write!(f, "vand.vi"),
+            Self::VorVi => write!(f, "vor.vi"),
+            Self::VxorVi => write!(f, "vxor.vi"),
+            Self::VrgatherVi => write!(f, "vrgather.vi"),
+            Self::VslideupVi => write!(f, "vslideup.vi"),
+            Self::VslidedownVi => write!(f, "vslidedown.vi"),
+            Self::VmseqVi => write!(f, "vmseq.vi"),
+            Self::VmsneVi => write!(f, "vmsne.vi"),
+            Self::VmsleuVi => write!(f, "vmsleu.vi"),
+            Self::VmsleVi => write!(f, "vmsle.vi"),
+            Self::VmsgtuVi => write!(f, "vmsgtu.vi"),
+            Self::VmsgtVi => write!(f, "vmsgt.vi"),
+            Self::VsadduVi => write!(f, "vsaddu.vi"),
+            Self::VsaddVi => write!(f, "vsadd.vi"),
+            Self::VsllVi => write!(f, "vsll.vi"),
+            Self::VsrlVi => write!(f, "vsrl.vi"),
+            Self::VsraVi => write!(f, "vsra.vi"),
+            Self::VssrlVi => write!(f, "vssrl.vi"),
+            Self::VssraVi => write!(f, "vssra.vi"),
+            Self::VnsrlWi => write!(f, "vnsrl.wi"),
+            Self::VnsraWi => write!(f, "vnsra.wi"),
+            Self::VnclipuWi => write!(f, "vnclipu.wi"),
+            Self::VnclipWi => write!(f, "vnclip.wi"),
+        }
+    }
+}
+
+/// The `Simm5VdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatSimm5VdVs2 {
+    pub op: OpcodeSimm5VdVs2,
+    pub raw: u32,
+    pub simm5: u32,
+    pub vd: u32,
+    pub vs2: u32,
+}
+
+impl FormatSimm5VdVs2 {}
+
+/// Opcodes with the `Simm5VdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeSimm5VdVs2 {
+    VadcVim,
+    VmadcVim,
+    VmadcVi,
+    VmergeVim,
+}
+
+impl std::fmt::Display for FormatSimm5VdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " simm5={:x}", self.simm5)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeSimm5VdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VadcVim => write!(f, "vadc.vim"),
+            Self::VmadcVim => write!(f, "vmadc.vim"),
+            Self::VmadcVi => write!(f, "vmadc.vi"),
+            Self::VmergeVim => write!(f, "vmerge.vim"),
+        }
+    }
+}
+
+/// The `VdVm` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatVdVm {
+    pub op: OpcodeVdVm,
+    pub raw: u32,
+    pub vd: u32,
+    pub vm: u32,
+}
+
+impl FormatVdVm {}
+
+/// Opcodes with the `VdVm` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeVdVm {
+    VidV,
+}
+
+impl std::fmt::Display for FormatVdVm {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeVdVm {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VidV => write!(f, "vid.v"),
+        }
+    }
+}
+
+/// The `VdVmVs1Vs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatVdVmVs1Vs2 {
+    pub op: OpcodeVdVmVs1Vs2,
+    pub raw: u32,
+    pub vd: u32,
+    pub vm: u32,
+    pub vs1: u32,
+    pub vs2: u32,
+}
+
+impl FormatVdVmVs1Vs2 {}
+
+/// Opcodes with the `VdVmVs1Vs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeVdVmVs1Vs2 {
+    VfaddVv,
+    VfredusumVs,
+    VfsubVv,
+    VfredosumVs,
+    VfminVv,
+    VfredminVs,
+    VfmaxVv,
+    VfredmaxVs,
+    VfsgnjVv,
+    VfsgnjnVv,
+    VfsgnjxVv,
+    VmfeqVv,
+    VmfleVv,
+    VmfltVv,
+    VmfneVv,
+    VfdivVv,
+    VfmulVv,
+    VfmaddVv,
+    VfnmaddVv,
+    VfmsubVv,
+    VfnmsubVv,
+    VfmaccVv,
+    VfnmaccVv,
+    VfmsacVv,
+    VfnmsacVv,
+    VfwaddVv,
+    VfwredusumVs,
+    VfwsubVv,
+    VfwredosumVs,
+    VfwaddWv,
+    VfwsubWv,
+    VfwmulVv,
+    VfwdotpVv,
+    VfwmaccVv,
+    VfwnmaccVv,
+    VfwmsacVv,
+    VfwnmsacVv,
+    VaddVv,
+    VsubVv,
+    VminuVv,
+    VminVv,
+    VmaxuVv,
+    VmaxVv,
+    VandVv,
+    VorVv,
+    VxorVv,
+    VrgatherVv,
+    Vrgatherei16Vv,
+    VmseqVv,
+    VmsneVv,
+    VmsltuVv,
+    VmsltVv,
+    VmsleuVv,
+    VmsleVv,
+    VsadduVv,
+    VsaddVv,
+    VssubuVv,
+    VssubVv,
+    VsllVv,
+    VsmulVv,
+    VsrlVv,
+    VsraVv,
+    VssrlVv,
+    VssraVv,
+    VnsrlWv,
+    VnsraWv,
+    VnclipuWv,
+    VnclipWv,
+    VwredsumuVs,
+    VwredsumVs,
+    VredsumVs,
+    VredandVs,
+    VredorVs,
+    VredxorVs,
+    VredminuVs,
+    VredminVs,
+    VredmaxuVs,
+    VredmaxVs,
+    VaadduVv,
+    VaaddVv,
+    VasubuVv,
+    VasubVv,
+    VmandnMm,
+    VmandMm,
+    VmorMm,
+    VmxorMm,
+    VmornMm,
+    VmnandMm,
+    VmnorMm,
+    VmxnorMm,
+    VdivuVv,
+    VdivVv,
+    VremuVv,
+    VremVv,
+    VmulhuVv,
+    VmulVv,
+    VmulhsuVv,
+    VmulhVv,
+    VmaddVv,
+    VnmsubVv,
+    VmaccVv,
+    VnmsacVv,
+    VwadduVv,
+    VwaddVv,
+    VwsubuVv,
+    VwsubVv,
+    VwadduWv,
+    VwaddWv,
+    VwsubuWv,
+    VwsubWv,
+    VwmuluVv,
+    VwmulsuVv,
+    VwmulVv,
+    VwmaccuVv,
+    VwmaccVv,
+    VwmaccsuVv,
+}
+
+impl std::fmt::Display for FormatVdVmVs1Vs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs1={:x}", self.vs1)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeVdVmVs1Vs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VfaddVv => write!(f, "vfadd.vv"),
+            Self::VfredusumVs => write!(f, "vfredusum.vs"),
+            Self::VfsubVv => write!(f, "vfsub.vv"),
+            Self::VfredosumVs => write!(f, "vfredosum.vs"),
+            Self::VfminVv => write!(f, "vfmin.vv"),
+            Self::VfredminVs => write!(f, "vfredmin.vs"),
+            Self::VfmaxVv => write!(f, "vfmax.vv"),
+            Self::VfredmaxVs => write!(f, "vfredmax.vs"),
+            Self::VfsgnjVv => write!(f, "vfsgnj.vv"),
+            Self::VfsgnjnVv => write!(f, "vfsgnjn.vv"),
+            Self::VfsgnjxVv => write!(f, "vfsgnjx.vv"),
+            Self::VmfeqVv => write!(f, "vmfeq.vv"),
+            Self::VmfleVv => write!(f, "vmfle.vv"),
+            Self::VmfltVv => write!(f, "vmflt.vv"),
+            Self::VmfneVv => write!(f, "vmfne.vv"),
+            Self::VfdivVv => write!(f, "vfdiv.vv"),
+            Self::VfmulVv => write!(f, "vfmul.vv"),
+            Self::VfmaddVv => write!(f, "vfmadd.vv"),
+            Self::VfnmaddVv => write!(f, "vfnmadd.vv"),
+            Self::VfmsubVv => write!(f, "vfmsub.vv"),
+            Self::VfnmsubVv => write!(f, "vfnmsub.vv"),
+            Self::VfmaccVv => write!(f, "vfmacc.vv"),
+            Self::VfnmaccVv => write!(f, "vfnmacc.vv"),
+            Self::VfmsacVv => write!(f, "vfmsac.vv"),
+            Self::VfnmsacVv => write!(f, "vfnmsac.vv"),
+            Self::VfwaddVv => write!(f, "vfwadd.vv"),
+            Self::VfwredusumVs => write!(f, "vfwredusum.vs"),
+            Self::VfwsubVv => write!(f, "vfwsub.vv"),
+            Self::VfwredosumVs => write!(f, "vfwredosum.vs"),
+            Self::VfwaddWv => write!(f, "vfwadd.wv"),
+            Self::VfwsubWv => write!(f, "vfwsub.wv"),
+            Self::VfwmulVv => write!(f, "vfwmul.vv"),
+            Self::VfwdotpVv => write!(f, "vfwdotp.vv"),
+            Self::VfwmaccVv => write!(f, "vfwmacc.vv"),
+            Self::VfwnmaccVv => write!(f, "vfwnmacc.vv"),
+            Self::VfwmsacVv => write!(f, "vfwmsac.vv"),
+            Self::VfwnmsacVv => write!(f, "vfwnmsac.vv"),
+            Self::VaddVv => write!(f, "vadd.vv"),
+            Self::VsubVv => write!(f, "vsub.vv"),
+            Self::VminuVv => write!(f, "vminu.vv"),
+            Self::VminVv => write!(f, "vmin.vv"),
+            Self::VmaxuVv => write!(f, "vmaxu.vv"),
+            Self::VmaxVv => write!(f, "vmax.vv"),
+            Self::VandVv => write!(f, "vand.vv"),
+            Self::VorVv => write!(f, "vor.vv"),
+            Self::VxorVv => write!(f, "vxor.vv"),
+            Self::VrgatherVv => write!(f, "vrgather.vv"),
+            Self::Vrgatherei16Vv => write!(f, "vrgatherei16.vv"),
+            Self::VmseqVv => write!(f, "vmseq.vv"),
+            Self::VmsneVv => write!(f, "vmsne.vv"),
+            Self::VmsltuVv => write!(f, "vmsltu.vv"),
+            Self::VmsltVv => write!(f, "vmslt.vv"),
+            Self::VmsleuVv => write!(f, "vmsleu.vv"),
+            Self::VmsleVv => write!(f, "vmsle.vv"),
+            Self::VsadduVv => write!(f, "vsaddu.vv"),
+            Self::VsaddVv => write!(f, "vsadd.vv"),
+            Self::VssubuVv => write!(f, "vssubu.vv"),
+            Self::VssubVv => write!(f, "vssub.vv"),
+            Self::VsllVv => write!(f, "vsll.vv"),
+            Self::VsmulVv => write!(f, "vsmul.vv"),
+            Self::VsrlVv => write!(f, "vsrl.vv"),
+            Self::VsraVv => write!(f, "vsra.vv"),
+            Self::VssrlVv => write!(f, "vssrl.vv"),
+            Self::VssraVv => write!(f, "vssra.vv"),
+            Self::VnsrlWv => write!(f, "vnsrl.wv"),
+            Self::VnsraWv => write!(f, "vnsra.wv"),
+            Self::VnclipuWv => write!(f, "vnclipu.wv"),
+            Self::VnclipWv => write!(f, "vnclip.wv"),
+            Self::VwredsumuVs => write!(f, "vwredsumu.vs"),
+            Self::VwredsumVs => write!(f, "vwredsum.vs"),
+            Self::VredsumVs => write!(f, "vredsum.vs"),
+            Self::VredandVs => write!(f, "vredand.vs"),
+            Self::VredorVs => write!(f, "vredor.vs"),
+            Self::VredxorVs => write!(f, "vredxor.vs"),
+            Self::VredminuVs => write!(f, "vredminu.vs"),
+            Self::VredminVs => write!(f, "vredmin.vs"),
+            Self::VredmaxuVs => write!(f, "vredmaxu.vs"),
+            Self::VredmaxVs => write!(f, "vredmax.vs"),
+            Self::VaadduVv => write!(f, "vaaddu.vv"),
+            Self::VaaddVv => write!(f, "vaadd.vv"),
+            Self::VasubuVv => write!(f, "vasubu.vv"),
+            Self::VasubVv => write!(f, "vasub.vv"),
+            Self::VmandnMm => write!(f, "vmandn.mm"),
+            Self::VmandMm => write!(f, "vmand.mm"),
+            Self::VmorMm => write!(f, "vmor.mm"),
+            Self::VmxorMm => write!(f, "vmxor.mm"),
+            Self::VmornMm => write!(f, "vmorn.mm"),
+            Self::VmnandMm => write!(f, "vmnand.mm"),
+            Self::VmnorMm => write!(f, "vmnor.mm"),
+            Self::VmxnorMm => write!(f, "vmxnor.mm"),
+            Self::VdivuVv => write!(f, "vdivu.vv"),
+            Self::VdivVv => write!(f, "vdiv.vv"),
+            Self::VremuVv => write!(f, "vremu.vv"),
+            Self::VremVv => write!(f, "vrem.vv"),
+            Self::VmulhuVv => write!(f, "vmulhu.vv"),
+            Self::VmulVv => write!(f, "vmul.vv"),
+            Self::VmulhsuVv => write!(f, "vmulhsu.vv"),
+            Self::VmulhVv => write!(f, "vmulh.vv"),
+            Self::VmaddVv => write!(f, "vmadd.vv"),
+            Self::VnmsubVv => write!(f, "vnmsub.vv"),
+            Self::VmaccVv => write!(f, "vmacc.vv"),
+            Self::VnmsacVv => write!(f, "vnmsac.vv"),
+            Self::VwadduVv => write!(f, "vwaddu.vv"),
+            Self::VwaddVv => write!(f, "vwadd.vv"),
+            Self::VwsubuVv => write!(f, "vwsubu.vv"),
+            Self::VwsubVv => write!(f, "vwsub.vv"),
+            Self::VwadduWv => write!(f, "vwaddu.wv"),
+            Self::VwaddWv => write!(f, "vwadd.wv"),
+            Self::VwsubuWv => write!(f, "vwsubu.wv"),
+            Self::VwsubWv => write!(f, "vwsub.wv"),
+            Self::VwmuluVv => write!(f, "vwmulu.vv"),
+            Self::VwmulsuVv => write!(f, "vwmulsu.vv"),
+            Self::VwmulVv => write!(f, "vwmul.vv"),
+            Self::VwmaccuVv => write!(f, "vwmaccu.vv"),
+            Self::VwmaccVv => write!(f, "vwmacc.vv"),
+            Self::VwmaccsuVv => write!(f, "vwmaccsu.vv"),
+        }
+    }
+}
+
+/// The `VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatVdVmVs2 {
+    pub op: OpcodeVdVmVs2,
+    pub raw: u32,
+    pub vd: u32,
+    pub vm: u32,
+    pub vs2: u32,
+}
+
+impl FormatVdVmVs2 {}
+
+/// Opcodes with the `VdVmVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeVdVmVs2 {
+    VfcvtXuFV,
+    VfcvtXFV,
+    VfcvtFXuV,
+    VfcvtFXV,
+    VfcvtRtzXuFV,
+    VfcvtRtzXFV,
+    VfwcvtXuFV,
+    VfwcvtXFV,
+    VfwcvtFXuV,
+    VfwcvtFXV,
+    VfwcvtFFV,
+    VfwcvtRtzXuFV,
+    VfwcvtRtzXFV,
+    VfncvtXuFW,
+    VfncvtXFW,
+    VfncvtFXuW,
+    VfncvtFXW,
+    VfncvtFFW,
+    VfncvtRodFFW,
+    VfncvtRtzXuFW,
+    VfncvtRtzXFW,
+    VfsqrtV,
+    Vfrsqrt7V,
+    Vfrec7V,
+    VfclassV,
+    VzextVf8,
+    VsextVf8,
+    VzextVf4,
+    VsextVf4,
+    VzextVf2,
+    VsextVf2,
+    VmsbfM,
+    VmsofM,
+    VmsifM,
+    ViotaM,
+}
+
+impl std::fmt::Display for FormatVdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vm={:x}", self.vm)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeVdVmVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VfcvtXuFV => write!(f, "vfcvt.xu.f.v"),
+            Self::VfcvtXFV => write!(f, "vfcvt.x.f.v"),
+            Self::VfcvtFXuV => write!(f, "vfcvt.f.xu.v"),
+            Self::VfcvtFXV => write!(f, "vfcvt.f.x.v"),
+            Self::VfcvtRtzXuFV => write!(f, "vfcvt.rtz.xu.f.v"),
+            Self::VfcvtRtzXFV => write!(f, "vfcvt.rtz.x.f.v"),
+            Self::VfwcvtXuFV => write!(f, "vfwcvt.xu.f.v"),
+            Self::VfwcvtXFV => write!(f, "vfwcvt.x.f.v"),
+            Self::VfwcvtFXuV => write!(f, "vfwcvt.f.xu.v"),
+            Self::VfwcvtFXV => write!(f, "vfwcvt.f.x.v"),
+            Self::VfwcvtFFV => write!(f, "vfwcvt.f.f.v"),
+            Self::VfwcvtRtzXuFV => write!(f, "vfwcvt.rtz.xu.f.v"),
+            Self::VfwcvtRtzXFV => write!(f, "vfwcvt.rtz.x.f.v"),
+            Self::VfncvtXuFW => write!(f, "vfncvt.xu.f.w"),
+            Self::VfncvtXFW => write!(f, "vfncvt.x.f.w"),
+            Self::VfncvtFXuW => write!(f, "vfncvt.f.xu.w"),
+            Self::VfncvtFXW => write!(f, "vfncvt.f.x.w"),
+            Self::VfncvtFFW => write!(f, "vfncvt.f.f.w"),
+            Self::VfncvtRodFFW => write!(f, "vfncvt.rod.f.f.w"),
+            Self::VfncvtRtzXuFW => write!(f, "vfncvt.rtz.xu.f.w"),
+            Self::VfncvtRtzXFW => write!(f, "vfncvt.rtz.x.f.w"),
+            Self::VfsqrtV => write!(f, "vfsqrt.v"),
+            Self::Vfrsqrt7V => write!(f, "vfrsqrt7.v"),
+            Self::Vfrec7V => write!(f, "vfrec7.v"),
+            Self::VfclassV => write!(f, "vfclass.v"),
+            Self::VzextVf8 => write!(f, "vzext.vf8"),
+            Self::VsextVf8 => write!(f, "vsext.vf8"),
+            Self::VzextVf4 => write!(f, "vzext.vf4"),
+            Self::VsextVf4 => write!(f, "vsext.vf4"),
+            Self::VzextVf2 => write!(f, "vzext.vf2"),
+            Self::VsextVf2 => write!(f, "vsext.vf2"),
+            Self::VmsbfM => write!(f, "vmsbf.m"),
+            Self::VmsofM => write!(f, "vmsof.m"),
+            Self::VmsifM => write!(f, "vmsif.m"),
+            Self::ViotaM => write!(f, "viota.m"),
+        }
+    }
+}
+
+/// The `VdVs1` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatVdVs1 {
+    pub op: OpcodeVdVs1,
+    pub raw: u32,
+    pub vd: u32,
+    pub vs1: u32,
+}
+
+impl FormatVdVs1 {}
+
+/// Opcodes with the `VdVs1` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeVdVs1 {
+    VmvVV,
+}
+
+impl std::fmt::Display for FormatVdVs1 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vs1={:x}", self.vs1)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeVdVs1 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VmvVV => write!(f, "vmv.v.v"),
+        }
+    }
+}
+
+/// The `VdVs1Vs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatVdVs1Vs2 {
+    pub op: OpcodeVdVs1Vs2,
+    pub raw: u32,
+    pub vd: u32,
+    pub vs1: u32,
+    pub vs2: u32,
+}
+
+impl FormatVdVs1Vs2 {}
+
+/// Opcodes with the `VdVs1Vs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeVdVs1Vs2 {
+    VadcVvm,
+    VmadcVvm,
+    VmadcVv,
+    VsbcVvm,
+    VmsbcVvm,
+    VmsbcVv,
+    VmergeVvm,
+    VcompressVm,
+}
+
+impl std::fmt::Display for FormatVdVs1Vs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vs1={:x}", self.vs1)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeVdVs1Vs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::VadcVvm => write!(f, "vadc.vvm"),
+            Self::VmadcVvm => write!(f, "vmadc.vvm"),
+            Self::VmadcVv => write!(f, "vmadc.vv"),
+            Self::VsbcVvm => write!(f, "vsbc.vvm"),
+            Self::VmsbcVvm => write!(f, "vmsbc.vvm"),
+            Self::VmsbcVv => write!(f, "vmsbc.vv"),
+            Self::VmergeVvm => write!(f, "vmerge.vvm"),
+            Self::VcompressVm => write!(f, "vcompress.vm"),
+        }
+    }
+}
+
+/// The `VdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub struct FormatVdVs2 {
+    pub op: OpcodeVdVs2,
+    pub raw: u32,
+    pub vd: u32,
+    pub vs2: u32,
+}
+
+impl FormatVdVs2 {}
+
+/// Opcodes with the `VdVs2` instruction format.
+#[derive(Debug, Copy, Clone)]
+pub enum OpcodeVdVs2 {
+    Vmv1rV,
+    Vmv2rV,
+    Vmv4rV,
+    Vmv8rV,
+}
+
+impl std::fmt::Display for FormatVdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.op)?;
+        write!(f, " vd={:x}", self.vd)?;
+        write!(f, " vs2={:x}", self.vs2)?;
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for OpcodeVdVs2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Vmv1rV => write!(f, "vmv1r.v"),
+            Self::Vmv2rV => write!(f, "vmv2r.v"),
+            Self::Vmv4rV => write!(f, "vmv4r.v"),
+            Self::Vmv8rV => write!(f, "vmv8r.v"),
+        }
+    }
+}
+
 /// Parse a `u32` into an instruction.
 pub fn parse_u32(raw: u32) -> Format {
     match raw & 0x7f {
@@ -2152,8 +3574,6 @@ pub fn parse_u32(raw: u32) -> Format {
         0x7073 => return parse_imm12_rd_rs1(OpcodeImm12RdRs1::Csrrci, raw),
         0x1007 => return parse_imm12_rd_rs1(OpcodeImm12RdRs1::Flh, raw),
         0x1027 => return parse_imm12hi_imm12lo_rs1_rs2(OpcodeImm12hiImm12loRs1Rs2::Fsh, raw),
-        0x7 => return parse_imm12_rd_rs1(OpcodeImm12RdRs1::Flb, raw),
-        0x27 => return parse_imm12hi_imm12lo_rs1_rs2(OpcodeImm12hiImm12loRs1Rs2::Fsb, raw),
         _ => (),
     }
     match raw & 0x7fff {
@@ -2194,6 +3614,92 @@ pub fn parse_u32(raw: u32) -> Format {
         0x4005033 => return parse_rd_rs1_rs2_rs3(OpcodeRdRs1Rs2Rs3::Fsr, raw),
         _ => (),
     }
+    match raw & 0x1c00707f {
+        0x4000007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei8V, raw),
+        0x4005007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei16V, raw),
+        0x4006007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei32V, raw),
+        0x4007007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei64V, raw),
+        0x14000007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei128V, raw),
+        0x14005007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei256V, raw),
+        0x14006007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei512V, raw),
+        0x14007007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vluxei1024V, raw),
+        0x4000027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei8V, raw),
+        0x4005027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei16V, raw),
+        0x4006027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei32V, raw),
+        0x4007027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei64V, raw),
+        0x14000027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei128V, raw),
+        0x14005027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei256V, raw),
+        0x14006027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei512V, raw),
+        0x14007027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsuxei1024V, raw),
+        0x8000007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse8V, raw),
+        0x8005007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse16V, raw),
+        0x8006007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse32V, raw),
+        0x8007007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse64V, raw),
+        0x18000007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse128V, raw),
+        0x18005007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse256V, raw),
+        0x18006007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse512V, raw),
+        0x18007007 => return parse_nf_rs1_rs2_vd_vm(OpcodeNfRs1Rs2VdVm::Vlse1024V, raw),
+        0x8000027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse8V, raw),
+        0x8005027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse16V, raw),
+        0x8006027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse32V, raw),
+        0x8007027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse64V, raw),
+        0x18000027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse128V, raw),
+        0x18005027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse256V, raw),
+        0x18006027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse512V, raw),
+        0x18007027 => return parse_nf_rs1_rs2_vm_vs3(OpcodeNfRs1Rs2VmVs3::Vsse1024V, raw),
+        0xc000007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei8V, raw),
+        0xc005007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei16V, raw),
+        0xc006007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei32V, raw),
+        0xc007007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei64V, raw),
+        0x1c000007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei128V, raw),
+        0x1c005007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei256V, raw),
+        0x1c006007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei512V, raw),
+        0x1c007007 => return parse_nf_rs1_vd_vm_vs2(OpcodeNfRs1VdVmVs2::Vloxei1024V, raw),
+        0xc000027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei8V, raw),
+        0xc005027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei16V, raw),
+        0xc006027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei32V, raw),
+        0xc007027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei64V, raw),
+        0x1c000027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei128V, raw),
+        0x1c005027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei256V, raw),
+        0x1c006027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei512V, raw),
+        0x1c007027 => return parse_nf_rs1_vm_vs2_vs3(OpcodeNfRs1VmVs2Vs3::Vsoxei1024V, raw),
+        _ => (),
+    }
+    match raw & 0x1df0707f {
+        0x7 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle8V, raw),
+        0x5007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle16V, raw),
+        0x6007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle32V, raw),
+        0x7007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle64V, raw),
+        0x10000007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle128V, raw),
+        0x10005007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle256V, raw),
+        0x10006007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle512V, raw),
+        0x10007007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle1024V, raw),
+        0x27 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse8V, raw),
+        0x5027 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse16V, raw),
+        0x6027 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse32V, raw),
+        0x7027 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse64V, raw),
+        0x10000027 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse128V, raw),
+        0x10005027 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse256V, raw),
+        0x10006027 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse512V, raw),
+        0x10007027 => return parse_nf_rs1_vm_vs3(OpcodeNfRs1VmVs3::Vse1024V, raw),
+        0x1000007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle8ffV, raw),
+        0x1005007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle16ffV, raw),
+        0x1006007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle32ffV, raw),
+        0x1007007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle64ffV, raw),
+        0x11000007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle128ffV, raw),
+        0x11005007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle256ffV, raw),
+        0x11006007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle512ffV, raw),
+        0x11007007 => return parse_nf_rs1_vd_vm(OpcodeNfRs1VdVm::Vle1024ffV, raw),
+        _ => (),
+    }
+    match raw & 0x8000707f {
+        0x7057 => return parse_rd_rs1_zimm11(OpcodeRdRs1Zimm11::Vsetvli, raw),
+        _ => (),
+    }
+    match raw & 0xc000707f {
+        0xc0007057 => return parse_rd_zimm_zimm10(OpcodeRdZimmZimm10::Vsetivli, raw),
+        _ => (),
+    }
     match raw & 0xf800707f {
         0x202f => return parse_aqrl_rd_rs1_rs2(OpcodeAqrlRdRs1Rs2::AmoaddW, raw),
         0x2000202f => return parse_aqrl_rd_rs1_rs2(OpcodeAqrlRdRs1Rs2::AmoxorW, raw),
@@ -2215,6 +3721,42 @@ pub fn parse_u32(raw: u32) -> Format {
         0xe000302f => return parse_aqrl_rd_rs1_rs2(OpcodeAqrlRdRs1Rs2::AmomaxuD, raw),
         0x800302f => return parse_aqrl_rd_rs1_rs2(OpcodeAqrlRdRs1Rs2::AmoswapD, raw),
         0x1800302f => return parse_aqrl_rd_rs1_rs2(OpcodeAqrlRdRs1Rs2::ScD, raw),
+        0x800002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoswapei8V, raw),
+        0x2f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoaddei8V, raw),
+        0x2000002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoxorei8V, raw),
+        0x6000002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoandei8V, raw),
+        0x4000002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoorei8V, raw),
+        0x8000002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominei8V, raw),
+        0xa000002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxei8V, raw),
+        0xc000002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominuei8V, raw),
+        0xe000002f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxuei8V, raw),
+        0x800502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoswapei16V, raw),
+        0x502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoaddei16V, raw),
+        0x2000502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoxorei16V, raw),
+        0x6000502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoandei16V, raw),
+        0x4000502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoorei16V, raw),
+        0x8000502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominei16V, raw),
+        0xa000502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxei16V, raw),
+        0xc000502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominuei16V, raw),
+        0xe000502f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxuei16V, raw),
+        0x800602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoswapei32V, raw),
+        0x602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoaddei32V, raw),
+        0x2000602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoxorei32V, raw),
+        0x6000602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoandei32V, raw),
+        0x4000602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoorei32V, raw),
+        0x8000602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominei32V, raw),
+        0xa000602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxei32V, raw),
+        0xc000602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominuei32V, raw),
+        0xe000602f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxuei32V, raw),
+        0x800702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoswapei64V, raw),
+        0x702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoaddei64V, raw),
+        0x2000702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoxorei64V, raw),
+        0x6000702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoandei64V, raw),
+        0x4000702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamoorei64V, raw),
+        0x8000702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominei64V, raw),
+        0xa000702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxei64V, raw),
+        0xc000702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamominuei64V, raw),
+        0xe000702f => return parse_rs1_vd_vm_vs2_wd(OpcodeRs1VdVmVs2Wd::Vamomaxuei64V, raw),
         _ => (),
     }
     match raw & 0xf9f0707f {
@@ -2235,6 +3777,296 @@ pub fn parse_u32(raw: u32) -> Format {
         0x48005013 => return parse_rd_rs1_shamt(OpcodeRdRs1Shamt::Sbexti, raw),
         0x28005013 => return parse_rd_rs1_shamt(OpcodeRdRs1Shamt::Gorci, raw),
         0x68005013 => return parse_rd_rs1_shamt(OpcodeRdRs1Shamt::Grevi, raw),
+        0x5057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfaddVf, raw),
+        0x8005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfsubVf, raw),
+        0x10005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfminVf, raw),
+        0x18005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfmaxVf, raw),
+        0x20005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfsgnjVf, raw),
+        0x24005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfsgnjnVf, raw),
+        0x28005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfsgnjxVf, raw),
+        0x38005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::Vfslide1upVf, raw),
+        0x3c005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::Vfslide1downVf, raw),
+        0x60005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmfeqVf, raw),
+        0x64005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmfleVf, raw),
+        0x6c005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmfltVf, raw),
+        0x70005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmfneVf, raw),
+        0x74005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmfgtVf, raw),
+        0x7c005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmfgeVf, raw),
+        0x80005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfdivVf, raw),
+        0x84005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfrdivVf, raw),
+        0x90005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfmulVf, raw),
+        0x9c005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfrsubVf, raw),
+        0xa0005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfmaddVf, raw),
+        0xa4005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfnmaddVf, raw),
+        0xa8005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfmsubVf, raw),
+        0xac005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfnmsubVf, raw),
+        0xb0005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfmaccVf, raw),
+        0xb4005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfnmaccVf, raw),
+        0xb8005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfmsacVf, raw),
+        0xbc005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfnmsacVf, raw),
+        0xc0005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwaddVf, raw),
+        0xc8005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwsubVf, raw),
+        0xd0005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwaddWf, raw),
+        0xd8005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwsubWf, raw),
+        0xe0005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwmulVf, raw),
+        0xec005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwdotpVf, raw),
+        0xf0005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwmaccVf, raw),
+        0xf4005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwnmaccVf, raw),
+        0xf8005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwmsacVf, raw),
+        0xfc005057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VfwnmsacVf, raw),
+        0x1057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfaddVv, raw),
+        0x4001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfredusumVs, raw),
+        0x8001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfsubVv, raw),
+        0xc001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfredosumVs, raw),
+        0x10001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfminVv, raw),
+        0x14001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfredminVs, raw),
+        0x18001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfmaxVv, raw),
+        0x1c001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfredmaxVs, raw),
+        0x20001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfsgnjVv, raw),
+        0x24001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfsgnjnVv, raw),
+        0x28001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfsgnjxVv, raw),
+        0x60001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmfeqVv, raw),
+        0x64001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmfleVv, raw),
+        0x6c001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmfltVv, raw),
+        0x70001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmfneVv, raw),
+        0x80001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfdivVv, raw),
+        0x90001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfmulVv, raw),
+        0xa0001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfmaddVv, raw),
+        0xa4001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfnmaddVv, raw),
+        0xa8001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfmsubVv, raw),
+        0xac001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfnmsubVv, raw),
+        0xb0001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfmaccVv, raw),
+        0xb4001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfnmaccVv, raw),
+        0xb8001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfmsacVv, raw),
+        0xbc001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfnmsacVv, raw),
+        0xc0001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwaddVv, raw),
+        0xc4001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwredusumVs, raw),
+        0xc8001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwsubVv, raw),
+        0xcc001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwredosumVs, raw),
+        0xd0001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwaddWv, raw),
+        0xd8001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwsubWv, raw),
+        0xe0001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwmulVv, raw),
+        0xec001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwdotpVv, raw),
+        0xf0001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwmaccVv, raw),
+        0xf4001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwnmaccVv, raw),
+        0xf8001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwmsacVv, raw),
+        0xfc001057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VfwnmsacVv, raw),
+        0x4057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VaddVx, raw),
+        0x8004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VsubVx, raw),
+        0xc004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VrsubVx, raw),
+        0x10004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VminuVx, raw),
+        0x14004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VminVx, raw),
+        0x18004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmaxuVx, raw),
+        0x1c004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmaxVx, raw),
+        0x24004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VandVx, raw),
+        0x28004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VorVx, raw),
+        0x2c004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VxorVx, raw),
+        0x30004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VrgatherVx, raw),
+        0x38004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VslideupVx, raw),
+        0x3c004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VslidedownVx, raw),
+        0x60004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmseqVx, raw),
+        0x64004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmsneVx, raw),
+        0x68004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmsltuVx, raw),
+        0x6c004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmsltVx, raw),
+        0x70004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmsleuVx, raw),
+        0x74004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmsleVx, raw),
+        0x78004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmsgtuVx, raw),
+        0x7c004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmsgtVx, raw),
+        0x80004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VsadduVx, raw),
+        0x84004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VsaddVx, raw),
+        0x88004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VssubuVx, raw),
+        0x8c004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VssubVx, raw),
+        0x94004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VsllVx, raw),
+        0x9c004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VsmulVx, raw),
+        0xa0004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VsrlVx, raw),
+        0xa4004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VsraVx, raw),
+        0xa8004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VssrlVx, raw),
+        0xac004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VssraVx, raw),
+        0xb0004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VnsrlWx, raw),
+        0xb4004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VnsraWx, raw),
+        0xb8004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VnclipuWx, raw),
+        0xbc004057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VnclipWx, raw),
+        0x57 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VaddVv, raw),
+        0x8000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VsubVv, raw),
+        0x10000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VminuVv, raw),
+        0x14000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VminVv, raw),
+        0x18000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmaxuVv, raw),
+        0x1c000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmaxVv, raw),
+        0x24000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VandVv, raw),
+        0x28000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VorVv, raw),
+        0x2c000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VxorVv, raw),
+        0x30000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VrgatherVv, raw),
+        0x38000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::Vrgatherei16Vv, raw),
+        0x60000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmseqVv, raw),
+        0x64000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmsneVv, raw),
+        0x68000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmsltuVv, raw),
+        0x6c000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmsltVv, raw),
+        0x70000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmsleuVv, raw),
+        0x74000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmsleVv, raw),
+        0x80000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VsadduVv, raw),
+        0x84000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VsaddVv, raw),
+        0x88000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VssubuVv, raw),
+        0x8c000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VssubVv, raw),
+        0x94000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VsllVv, raw),
+        0x9c000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VsmulVv, raw),
+        0xa0000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VsrlVv, raw),
+        0xa4000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VsraVv, raw),
+        0xa8000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VssrlVv, raw),
+        0xac000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VssraVv, raw),
+        0xb0000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VnsrlWv, raw),
+        0xb4000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VnsraWv, raw),
+        0xb8000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VnclipuWv, raw),
+        0xbc000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VnclipWv, raw),
+        0xc0000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwredsumuVs, raw),
+        0xc4000057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwredsumVs, raw),
+        0x3057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VaddVi, raw),
+        0xc003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VrsubVi, raw),
+        0x24003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VandVi, raw),
+        0x28003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VorVi, raw),
+        0x2c003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VxorVi, raw),
+        0x30003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VrgatherVi, raw),
+        0x38003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VslideupVi, raw),
+        0x3c003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VslidedownVi, raw),
+        0x60003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VmseqVi, raw),
+        0x64003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VmsneVi, raw),
+        0x70003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VmsleuVi, raw),
+        0x74003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VmsleVi, raw),
+        0x78003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VmsgtuVi, raw),
+        0x7c003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VmsgtVi, raw),
+        0x80003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VsadduVi, raw),
+        0x84003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VsaddVi, raw),
+        0x94003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VsllVi, raw),
+        0xa0003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VsrlVi, raw),
+        0xa4003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VsraVi, raw),
+        0xa8003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VssrlVi, raw),
+        0xac003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VssraVi, raw),
+        0xb0003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VnsrlWi, raw),
+        0xb4003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VnsraWi, raw),
+        0xb8003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VnclipuWi, raw),
+        0xbc003057 => return parse_simm5_vd_vm_vs2(OpcodeSimm5VdVmVs2::VnclipWi, raw),
+        0x2057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredsumVs, raw),
+        0x4002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredandVs, raw),
+        0x8002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredorVs, raw),
+        0xc002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredxorVs, raw),
+        0x10002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredminuVs, raw),
+        0x14002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredminVs, raw),
+        0x18002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredmaxuVs, raw),
+        0x1c002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VredmaxVs, raw),
+        0x20002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VaadduVv, raw),
+        0x24002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VaaddVv, raw),
+        0x28002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VasubuVv, raw),
+        0x2c002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VasubVv, raw),
+        0x60002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmandnMm, raw),
+        0x64002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmandMm, raw),
+        0x68002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmorMm, raw),
+        0x6c002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmxorMm, raw),
+        0x70002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmornMm, raw),
+        0x74002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmnandMm, raw),
+        0x78002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmnorMm, raw),
+        0x7c002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmxnorMm, raw),
+        0x80002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VdivuVv, raw),
+        0x84002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VdivVv, raw),
+        0x88002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VremuVv, raw),
+        0x8c002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VremVv, raw),
+        0x90002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmulhuVv, raw),
+        0x94002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmulVv, raw),
+        0x98002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmulhsuVv, raw),
+        0x9c002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmulhVv, raw),
+        0xa4002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmaddVv, raw),
+        0xac002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VnmsubVv, raw),
+        0xb4002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VmaccVv, raw),
+        0xbc002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VnmsacVv, raw),
+        0xc0002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwadduVv, raw),
+        0xc4002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwaddVv, raw),
+        0xc8002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwsubuVv, raw),
+        0xcc002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwsubVv, raw),
+        0xd0002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwadduWv, raw),
+        0xd4002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwaddWv, raw),
+        0xd8002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwsubuWv, raw),
+        0xdc002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwsubWv, raw),
+        0xe0002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwmuluVv, raw),
+        0xe8002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwmulsuVv, raw),
+        0xec002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwmulVv, raw),
+        0xf0002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwmaccuVv, raw),
+        0xf4002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwmaccVv, raw),
+        0xfc002057 => return parse_vd_vm_vs1_vs2(OpcodeVdVmVs1Vs2::VwmaccsuVv, raw),
+        0x20006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VaadduVx, raw),
+        0x24006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VaaddVx, raw),
+        0x28006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VasubuVx, raw),
+        0x2c006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VasubVx, raw),
+        0x38006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::Vslide1upVx, raw),
+        0x3c006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::Vslide1downVx, raw),
+        0x80006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VdivuVx, raw),
+        0x84006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VdivVx, raw),
+        0x88006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VremuVx, raw),
+        0x8c006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VremVx, raw),
+        0x90006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmulhuVx, raw),
+        0x94006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmulVx, raw),
+        0x98006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmulhsuVx, raw),
+        0x9c006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmulhVx, raw),
+        0xa4006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmaddVx, raw),
+        0xac006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VnmsubVx, raw),
+        0xb4006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VmaccVx, raw),
+        0xbc006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VnmsacVx, raw),
+        0xc0006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwadduVx, raw),
+        0xc4006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwaddVx, raw),
+        0xc8006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwsubuVx, raw),
+        0xcc006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwsubVx, raw),
+        0xd0006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwadduWx, raw),
+        0xd4006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwaddWx, raw),
+        0xd8006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwsubuWx, raw),
+        0xdc006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwsubWx, raw),
+        0xe0006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwmuluVx, raw),
+        0xe8006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwmulsuVx, raw),
+        0xec006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwmulVx, raw),
+        0xf0006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwmaccuVx, raw),
+        0xf4006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwmaccVx, raw),
+        0xf8006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwmaccusVx, raw),
+        0xfc006057 => return parse_rs1_vd_vm_vs2(OpcodeRs1VdVmVs2::VwmaccsuVx, raw),
+        _ => (),
+    }
+    match raw & 0xfc0ff07f {
+        0x48001057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfcvtXuFV, raw),
+        0x48009057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfcvtXFV, raw),
+        0x48011057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfcvtFXuV, raw),
+        0x48019057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfcvtFXV, raw),
+        0x48031057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfcvtRtzXuFV, raw),
+        0x48039057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfcvtRtzXFV, raw),
+        0x48041057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfwcvtXuFV, raw),
+        0x48049057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfwcvtXFV, raw),
+        0x48051057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfwcvtFXuV, raw),
+        0x48059057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfwcvtFXV, raw),
+        0x48061057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfwcvtFFV, raw),
+        0x48071057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfwcvtRtzXuFV, raw),
+        0x48079057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfwcvtRtzXFV, raw),
+        0x48081057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtXuFW, raw),
+        0x48089057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtXFW, raw),
+        0x48091057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtFXuW, raw),
+        0x48099057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtFXW, raw),
+        0x480a1057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtFFW, raw),
+        0x480a9057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtRodFFW, raw),
+        0x480b1057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtRtzXuFW, raw),
+        0x480b9057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfncvtRtzXFW, raw),
+        0x4c001057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfsqrtV, raw),
+        0x4c021057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::Vfrsqrt7V, raw),
+        0x4c029057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::Vfrec7V, raw),
+        0x4c081057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VfclassV, raw),
+        0x48012057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VzextVf8, raw),
+        0x4801a057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VsextVf8, raw),
+        0x48022057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VzextVf4, raw),
+        0x4802a057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VsextVf4, raw),
+        0x48032057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VzextVf2, raw),
+        0x4803a057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VsextVf2, raw),
+        0x5000a057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VmsbfM, raw),
+        0x50012057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VmsofM, raw),
+        0x5001a057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::VmsifM, raw),
+        0x50082057 => return parse_vd_vm_vs2(OpcodeVdVmVs2::ViotaM, raw),
+        0x40082057 => return parse_rd_vm_vs2(OpcodeRdVmVs2::VcpopM, raw),
+        0x4008a057 => return parse_rd_vm_vs2(OpcodeRdVmVs2::VfirstM, raw),
+        _ => (),
+    }
+    match raw & 0xfdfff07f {
+        0x5008a057 => return parse_vd_vm(OpcodeVdVm::VidV, raw),
         _ => (),
     }
     match raw & 0xfe00007f {
@@ -2254,10 +4086,6 @@ pub fn parse_u32(raw: u32) -> Format {
         0xc000053 => return parse_rd_rm_rs1_rs2(OpcodeRdRmRs1Rs2::FsubH, raw),
         0x14000053 => return parse_rd_rm_rs1_rs2(OpcodeRdRmRs1Rs2::FmulH, raw),
         0x1c000053 => return parse_rd_rm_rs1_rs2(OpcodeRdRmRs1Rs2::FdivH, raw),
-        0x4c000053 => return parse_rd_rm_rs1_rs2(OpcodeRdRmRs1Rs2::FmulexSH, raw),
-        0x54000053 => return parse_rd_rm_rs1_rs2(OpcodeRdRmRs1Rs2::FmacexSH, raw),
-        0x4e000053 => return parse_rd_rm_rs1_rs2(OpcodeRdRmRs1Rs2::FmulexSB, raw),
-        0x56000053 => return parse_rd_rm_rs1_rs2(OpcodeRdRmRs1Rs2::FmacexSB, raw),
         _ => (),
     }
     match raw & 0xfe00707f {
@@ -2359,140 +4187,27 @@ pub fn parse_u32(raw: u32) -> Format {
         0xa4002053 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::FeqH, raw),
         0xa4001053 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::FltH, raw),
         0xa4000053 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::FleH, raw),
-        0x82000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfaddS, raw),
-        0x82004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfaddRS, raw),
-        0x84000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsubS, raw),
-        0x84004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsubRS, raw),
-        0x86000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmulS, raw),
-        0x86004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmulRS, raw),
-        0x88000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdivS, raw),
-        0x88004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdivRS, raw),
-        0x8a000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfminS, raw),
-        0x8a004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfminRS, raw),
-        0x8c000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmaxS, raw),
-        0x8c004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmaxRS, raw),
-        0x90000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmacS, raw),
-        0x90004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmacRS, raw),
-        0x92000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmreS, raw),
-        0x92004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmreRS, raw),
-        0x9a000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjS, raw),
-        0x9a004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjRS, raw),
-        0x9c000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjnS, raw),
-        0x9c004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjnRS, raw),
-        0x9e000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjxS, raw),
-        0x9e004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjxRS, raw),
-        0xa0000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfeqS, raw),
-        0xa0004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfeqRS, raw),
-        0xa2000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfneS, raw),
-        0xa2004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfneRS, raw),
-        0xa4000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfltS, raw),
-        0xa4004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfltRS, raw),
-        0xa6000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgeS, raw),
-        0xa6004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgeRS, raw),
-        0xa8000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfleS, raw),
-        0xa8004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfleRS, raw),
-        0xaa000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgtS, raw),
-        0xaa004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgtRS, raw),
-        0xb0000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkaSS, raw),
-        0xb0004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkbSS, raw),
-        0xb2000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkcSS, raw),
-        0xb2004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkdSS, raw),
-        0xb4000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkaSD, raw),
-        0xb4004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkbSD, raw),
-        0xb6000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkcSD, raw),
-        0xb6004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkdSD, raw),
-        0x82002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfaddH, raw),
-        0x82006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfaddRH, raw),
-        0x84002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsubH, raw),
-        0x84006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsubRH, raw),
-        0x86002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmulH, raw),
-        0x86006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmulRH, raw),
-        0x88002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdivH, raw),
-        0x88006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdivRH, raw),
-        0x8a002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfminH, raw),
-        0x8a006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfminRH, raw),
-        0x8c002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmaxH, raw),
-        0x8c006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmaxRH, raw),
-        0x90002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmacH, raw),
-        0x90006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmacRH, raw),
-        0x92002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmreH, raw),
-        0x92006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmreRH, raw),
-        0x9a002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjH, raw),
-        0x9a006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjRH, raw),
-        0x9c002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjnH, raw),
-        0x9c006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjnRH, raw),
-        0x9e002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjxH, raw),
-        0x9e006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjxRH, raw),
-        0xa0002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfeqH, raw),
-        0xa0006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfeqRH, raw),
-        0xa2002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfneH, raw),
-        0xa2006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfneRH, raw),
-        0xa4002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfltH, raw),
-        0xa4006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfltRH, raw),
-        0xa6002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgeH, raw),
-        0xa6006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgeRH, raw),
-        0xa8002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfleH, raw),
-        0xa8006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfleRH, raw),
-        0xaa002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgtH, raw),
-        0xaa006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgtRH, raw),
-        0xb0002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkaHS, raw),
-        0xb0006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkbHS, raw),
-        0xb2002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkcHS, raw),
-        0xb2006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkdHS, raw),
-        0xb4002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkaHD, raw),
-        0xb4006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkbHD, raw),
-        0xb6002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkcHD, raw),
-        0xb6006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkdHD, raw),
-        0x82003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfaddB, raw),
-        0x82007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfaddRB, raw),
-        0x84003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsubB, raw),
-        0x84007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsubRB, raw),
-        0x86003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmulB, raw),
-        0x86007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmulRB, raw),
-        0x88003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdivB, raw),
-        0x88007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdivRB, raw),
-        0x8a003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfminB, raw),
-        0x8a007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfminRB, raw),
-        0x8c003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmaxB, raw),
-        0x8c007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmaxRB, raw),
-        0x90003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmacB, raw),
-        0x90007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmacRB, raw),
-        0x92003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmreB, raw),
-        0x92007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfmreRB, raw),
-        0x9a003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjB, raw),
-        0x9a007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjRB, raw),
-        0x9c003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjnB, raw),
-        0x9c007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjnRB, raw),
-        0x9e003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjxB, raw),
-        0x9e007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfsgnjxRB, raw),
-        0xa0003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfeqB, raw),
-        0xa0007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfeqRB, raw),
-        0xa2003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfneB, raw),
-        0xa2007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfneRB, raw),
-        0xa4003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfltB, raw),
-        0xa4007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfltRB, raw),
-        0xa6003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgeB, raw),
-        0xa6007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgeRB, raw),
-        0xa8003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfleB, raw),
-        0xa8007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfleRB, raw),
-        0xaa003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgtB, raw),
-        0xaa007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfgtRB, raw),
-        0xb0003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkaBS, raw),
-        0xb0007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkbBS, raw),
-        0xb2003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkcBS, raw),
-        0xb2007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkdBS, raw),
-        0xb4003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkaBD, raw),
-        0xb4007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkbBD, raw),
-        0xb6003033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkcBD, raw),
-        0xb6007033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfcpkdBD, raw),
-        0x96000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdotpexSH, raw),
-        0x96004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdotpexSRH, raw),
-        0xba000033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfndotpexSH, raw),
-        0xba004033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfndotpexSRH, raw),
-        0x96002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdotpexHB, raw),
-        0x96006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfdotpexHRB, raw),
-        0xba002033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfndotpexHB, raw),
-        0xba006033 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::VfndotpexHRB, raw),
+        0x80007057 => return parse_rd_rs1_rs2(OpcodeRdRs1Rs2::Vsetvl, raw),
+        0x5c005057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VfmergeVfm, raw),
+        0x40004057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VadcVxm, raw),
+        0x44004057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VmadcVxm, raw),
+        0x46004057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VmadcVx, raw),
+        0x48004057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VsbcVxm, raw),
+        0x4c004057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VmsbcVxm, raw),
+        0x4e004057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VmsbcVx, raw),
+        0x5c004057 => return parse_rs1_vd_vs2(OpcodeRs1VdVs2::VmergeVxm, raw),
+        0x40000057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VadcVvm, raw),
+        0x44000057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VmadcVvm, raw),
+        0x46000057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VmadcVv, raw),
+        0x48000057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VsbcVvm, raw),
+        0x4c000057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VmsbcVvm, raw),
+        0x4e000057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VmsbcVv, raw),
+        0x5c000057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VmergeVvm, raw),
+        0x40003057 => return parse_simm5_vd_vs2(OpcodeSimm5VdVs2::VadcVim, raw),
+        0x44003057 => return parse_simm5_vd_vs2(OpcodeSimm5VdVs2::VmadcVim, raw),
+        0x46003057 => return parse_simm5_vd_vs2(OpcodeSimm5VdVs2::VmadcVi, raw),
+        0x5c003057 => return parse_simm5_vd_vs2(OpcodeSimm5VdVs2::VmergeVim, raw),
+        0x5e002057 => return parse_vd_vs1_vs2(OpcodeVdVs1Vs2::VcompressVm, raw),
         _ => (),
     }
     match raw & 0xfe007fff {
@@ -2513,6 +4228,12 @@ pub fn parse_u32(raw: u32) -> Format {
         0x800002b => return parse_imm5_rd(OpcodeImm5Rd::Dmstati, raw),
         0xa00002b => return parse_rd_rs2(OpcodeRdRs2::Dmstat, raw),
         0x902b => return parse_rd_rs2(OpcodeRdRs2::Scfgr, raw),
+        0x42001057 => return parse_rd_vs2(OpcodeRdVs2::VfmvFS, raw),
+        0x9e003057 => return parse_vd_vs2(OpcodeVdVs2::Vmv1rV, raw),
+        0x9e00b057 => return parse_vd_vs2(OpcodeVdVs2::Vmv2rV, raw),
+        0x9e01b057 => return parse_vd_vs2(OpcodeVdVs2::Vmv4rV, raw),
+        0x9e03b057 => return parse_vd_vs2(OpcodeVdVs2::Vmv8rV, raw),
+        0x42002057 => return parse_rd_vs2(OpcodeRdVs2::VmvXS, raw),
         _ => (),
     }
     match raw & 0xfff0007f {
@@ -2599,56 +4320,34 @@ pub fn parse_u32(raw: u32) -> Format {
         0x42200053 => return parse_rd_rs1(OpcodeRdRs1::FcvtDH, raw),
         0x44300053 => return parse_rd_rs1(OpcodeRdRs1::FcvtHB, raw),
         0x46300053 => return parse_rd_rs1(OpcodeRdRs1::FcvtBB, raw),
-        0x8e000033 => return parse_rd_rs1(OpcodeRdRs1::VfsqrtS, raw),
-        0x98100033 => return parse_rd_rs1(OpcodeRdRs1::VfclassS, raw),
-        0x98000033 => return parse_rd_rs1(OpcodeRdRs1::VfmvXS, raw),
-        0x98004033 => return parse_rd_rs1(OpcodeRdRs1::VfmvSX, raw),
-        0x98200033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtXS, raw),
-        0x98204033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtXuS, raw),
-        0x98300033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtSX, raw),
-        0x98304033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtSXu, raw),
-        0x98502033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtHH, raw),
-        0x98506033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuHH, raw),
-        0x8e002033 => return parse_rd_rs1(OpcodeRdRs1::VfsqrtH, raw),
-        0x98102033 => return parse_rd_rs1(OpcodeRdRs1::VfclassH, raw),
-        0x98002033 => return parse_rd_rs1(OpcodeRdRs1::VfmvXH, raw),
-        0x98006033 => return parse_rd_rs1(OpcodeRdRs1::VfmvHX, raw),
-        0x98202033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtXH, raw),
-        0x98206033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtXuH, raw),
-        0x98302033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtHX, raw),
-        0x98306033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtHXu, raw),
-        0x98600033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtSH, raw),
-        0x98604033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuSH, raw),
-        0x98402033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtHS, raw),
-        0x98406033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuHS, raw),
-        0x8e003033 => return parse_rd_rs1(OpcodeRdRs1::VfsqrtB, raw),
-        0x98003033 => return parse_rd_rs1(OpcodeRdRs1::VfmvXB, raw),
-        0x98007033 => return parse_rd_rs1(OpcodeRdRs1::VfmvBX, raw),
-        0x98103033 => return parse_rd_rs1(OpcodeRdRs1::VfclassB, raw),
-        0x98203033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtXB, raw),
-        0x98207033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtXuB, raw),
-        0x98303033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtBX, raw),
-        0x98307033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtBXu, raw),
-        0x98700033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtSB, raw),
-        0x98704033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuSB, raw),
-        0x98403033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtBS, raw),
-        0x98407033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuBS, raw),
-        0x98702033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtHB, raw),
-        0x98706033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuHB, raw),
-        0x98603033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtBH, raw),
-        0x98607033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuBH, raw),
-        0x98703033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtBB, raw),
-        0x98707033 => return parse_rd_rs1(OpcodeRdRs1::VfcvtuBB, raw),
-        0x8fc00033 => return parse_rd_rs1(OpcodeRdRs1::VfsumS, raw),
-        0xafc00033 => return parse_rd_rs1(OpcodeRdRs1::VfnsumS, raw),
-        0x8fe02033 => return parse_rd_rs1(OpcodeRdRs1::VfsumH, raw),
-        0xafe02033 => return parse_rd_rs1(OpcodeRdRs1::VfnsumH, raw),
-        0x8e703033 => return parse_rd_rs1(OpcodeRdRs1::VfsumB, raw),
-        0xae703033 => return parse_rd_rs1(OpcodeRdRs1::VfnsumB, raw),
-        0x8f600033 => return parse_rd_rs1(OpcodeRdRs1::VfsumexSH, raw),
-        0xaf600033 => return parse_rd_rs1(OpcodeRdRs1::VfnsumexSH, raw),
-        0x8f702033 => return parse_rd_rs1(OpcodeRdRs1::VfsumexHB, raw),
-        0xaf702033 => return parse_rd_rs1(OpcodeRdRs1::VfnsumexHB, raw),
+        0x2b00007 => return parse_rs1_vd(OpcodeRs1Vd::VlmV, raw),
+        0x2b00027 => return parse_rs1_vs3(OpcodeRs1Vs3::VsmV, raw),
+        0x2800007 => return parse_rs1_vd(OpcodeRs1Vd::Vl1re8V, raw),
+        0x2805007 => return parse_rs1_vd(OpcodeRs1Vd::Vl1re16V, raw),
+        0x2806007 => return parse_rs1_vd(OpcodeRs1Vd::Vl1re32V, raw),
+        0x2807007 => return parse_rs1_vd(OpcodeRs1Vd::Vl1re64V, raw),
+        0x22800007 => return parse_rs1_vd(OpcodeRs1Vd::Vl2re8V, raw),
+        0x22805007 => return parse_rs1_vd(OpcodeRs1Vd::Vl2re16V, raw),
+        0x22806007 => return parse_rs1_vd(OpcodeRs1Vd::Vl2re32V, raw),
+        0x22807007 => return parse_rs1_vd(OpcodeRs1Vd::Vl2re64V, raw),
+        0x62800007 => return parse_rs1_vd(OpcodeRs1Vd::Vl4re8V, raw),
+        0x62805007 => return parse_rs1_vd(OpcodeRs1Vd::Vl4re16V, raw),
+        0x62806007 => return parse_rs1_vd(OpcodeRs1Vd::Vl4re32V, raw),
+        0x62807007 => return parse_rs1_vd(OpcodeRs1Vd::Vl4re64V, raw),
+        0xe2800007 => return parse_rs1_vd(OpcodeRs1Vd::Vl8re8V, raw),
+        0xe2805007 => return parse_rs1_vd(OpcodeRs1Vd::Vl8re16V, raw),
+        0xe2806007 => return parse_rs1_vd(OpcodeRs1Vd::Vl8re32V, raw),
+        0xe2807007 => return parse_rs1_vd(OpcodeRs1Vd::Vl8re64V, raw),
+        0x2800027 => return parse_rs1_vs3(OpcodeRs1Vs3::Vs1rV, raw),
+        0x22800027 => return parse_rs1_vs3(OpcodeRs1Vs3::Vs2rV, raw),
+        0x62800027 => return parse_rs1_vs3(OpcodeRs1Vs3::Vs4rV, raw),
+        0xe2800027 => return parse_rs1_vs3(OpcodeRs1Vs3::Vs8rV, raw),
+        0x42005057 => return parse_rs1_vd(OpcodeRs1Vd::VfmvSF, raw),
+        0x5e005057 => return parse_rs1_vd(OpcodeRs1Vd::VfmvVF, raw),
+        0x5e004057 => return parse_rs1_vd(OpcodeRs1Vd::VmvVX, raw),
+        0x5e000057 => return parse_vd_vs1(OpcodeVdVs1::VmvVV, raw),
+        0x5e003057 => return parse_simm5_vd(OpcodeSimm5Vd::VmvVI, raw),
+        0x42006057 => return parse_rs1_vd(OpcodeRs1Vd::VmvSX, raw),
         _ => (),
     }
     match raw & 0xfff07fff {
@@ -2840,6 +4539,82 @@ pub fn parse_jimm20_rd(op: OpcodeJimm20Rd, raw: u32) -> Format {
     })
 }
 
+/// Parse an instruction with the `NfRs1Rs2VdVm` format.
+pub fn parse_nf_rs1_rs2_vd_vm(op: OpcodeNfRs1Rs2VdVm, raw: u32) -> Format {
+    Format::NfRs1Rs2VdVm(FormatNfRs1Rs2VdVm {
+        op,
+        raw,
+        nf: (raw >> 29) & 0x7,
+        rs1: (raw >> 15) & 0x1f,
+        rs2: (raw >> 20) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+    })
+}
+
+/// Parse an instruction with the `NfRs1Rs2VmVs3` format.
+pub fn parse_nf_rs1_rs2_vm_vs3(op: OpcodeNfRs1Rs2VmVs3, raw: u32) -> Format {
+    Format::NfRs1Rs2VmVs3(FormatNfRs1Rs2VmVs3 {
+        op,
+        raw,
+        nf: (raw >> 29) & 0x7,
+        rs1: (raw >> 15) & 0x1f,
+        rs2: (raw >> 20) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs3: (raw >> 7) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `NfRs1VdVm` format.
+pub fn parse_nf_rs1_vd_vm(op: OpcodeNfRs1VdVm, raw: u32) -> Format {
+    Format::NfRs1VdVm(FormatNfRs1VdVm {
+        op,
+        raw,
+        nf: (raw >> 29) & 0x7,
+        rs1: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+    })
+}
+
+/// Parse an instruction with the `NfRs1VdVmVs2` format.
+pub fn parse_nf_rs1_vd_vm_vs2(op: OpcodeNfRs1VdVmVs2, raw: u32) -> Format {
+    Format::NfRs1VdVmVs2(FormatNfRs1VdVmVs2 {
+        op,
+        raw,
+        nf: (raw >> 29) & 0x7,
+        rs1: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `NfRs1VmVs2Vs3` format.
+pub fn parse_nf_rs1_vm_vs2_vs3(op: OpcodeNfRs1VmVs2Vs3, raw: u32) -> Format {
+    Format::NfRs1VmVs2Vs3(FormatNfRs1VmVs2Vs3 {
+        op,
+        raw,
+        nf: (raw >> 29) & 0x7,
+        rs1: (raw >> 15) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs2: (raw >> 20) & 0x1f,
+        vs3: (raw >> 7) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `NfRs1VmVs3` format.
+pub fn parse_nf_rs1_vm_vs3(op: OpcodeNfRs1VmVs3, raw: u32) -> Format {
+    Format::NfRs1VmVs3(FormatNfRs1VmVs3 {
+        op,
+        raw,
+        nf: (raw >> 29) & 0x7,
+        rs1: (raw >> 15) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs3: (raw >> 7) & 0x1f,
+    })
+}
+
 /// Parse an instruction with the `RdRmRs1` format.
 pub fn parse_rd_rm_rs1(op: OpcodeRdRmRs1, raw: u32) -> Format {
     Format::RdRmRs1(FormatRdRmRs1 {
@@ -2943,6 +4718,17 @@ pub fn parse_rd_rs1_shamtw(op: OpcodeRdRs1Shamtw, raw: u32) -> Format {
     })
 }
 
+/// Parse an instruction with the `RdRs1Zimm11` format.
+pub fn parse_rd_rs1_zimm11(op: OpcodeRdRs1Zimm11, raw: u32) -> Format {
+    Format::RdRs1Zimm11(FormatRdRs1Zimm11 {
+        op,
+        raw,
+        rd: (raw >> 7) & 0x1f,
+        rs1: (raw >> 15) & 0x1f,
+        zimm11: (raw >> 20) & 0x7ff,
+    })
+}
+
 /// Parse an instruction with the `RdRs2` format.
 pub fn parse_rd_rs2(op: OpcodeRdRs2, raw: u32) -> Format {
     Format::RdRs2(FormatRdRs2 {
@@ -2950,6 +4736,38 @@ pub fn parse_rd_rs2(op: OpcodeRdRs2, raw: u32) -> Format {
         raw,
         rd: (raw >> 7) & 0x1f,
         rs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `RdVmVs2` format.
+pub fn parse_rd_vm_vs2(op: OpcodeRdVmVs2, raw: u32) -> Format {
+    Format::RdVmVs2(FormatRdVmVs2 {
+        op,
+        raw,
+        rd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `RdVs2` format.
+pub fn parse_rd_vs2(op: OpcodeRdVs2, raw: u32) -> Format {
+    Format::RdVs2(FormatRdVs2 {
+        op,
+        raw,
+        rd: (raw >> 7) & 0x1f,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `RdZimmZimm10` format.
+pub fn parse_rd_zimm_zimm10(op: OpcodeRdZimmZimm10, raw: u32) -> Format {
+    Format::RdZimmZimm10(FormatRdZimmZimm10 {
+        op,
+        raw,
+        rd: (raw >> 7) & 0x1f,
+        zimm: (raw >> 15) & 0x1f,
+        zimm10: (raw >> 20) & 0x3ff,
     })
 }
 
@@ -2972,6 +4790,159 @@ pub fn parse_rs1_rs2(op: OpcodeRs1Rs2, raw: u32) -> Format {
     })
 }
 
+/// Parse an instruction with the `Rs1Vd` format.
+pub fn parse_rs1_vd(op: OpcodeRs1Vd, raw: u32) -> Format {
+    Format::Rs1Vd(FormatRs1Vd {
+        op,
+        raw,
+        rs1: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `Rs1VdVmVs2` format.
+pub fn parse_rs1_vd_vm_vs2(op: OpcodeRs1VdVmVs2, raw: u32) -> Format {
+    Format::Rs1VdVmVs2(FormatRs1VdVmVs2 {
+        op,
+        raw,
+        rs1: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `Rs1VdVmVs2Wd` format.
+pub fn parse_rs1_vd_vm_vs2_wd(op: OpcodeRs1VdVmVs2Wd, raw: u32) -> Format {
+    Format::Rs1VdVmVs2Wd(FormatRs1VdVmVs2Wd {
+        op,
+        raw,
+        rs1: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs2: (raw >> 20) & 0x1f,
+        wd: (raw >> 26) & 0x1,
+    })
+}
+
+/// Parse an instruction with the `Rs1VdVs2` format.
+pub fn parse_rs1_vd_vs2(op: OpcodeRs1VdVs2, raw: u32) -> Format {
+    Format::Rs1VdVs2(FormatRs1VdVs2 {
+        op,
+        raw,
+        rs1: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `Rs1Vs3` format.
+pub fn parse_rs1_vs3(op: OpcodeRs1Vs3, raw: u32) -> Format {
+    Format::Rs1Vs3(FormatRs1Vs3 {
+        op,
+        raw,
+        rs1: (raw >> 15) & 0x1f,
+        vs3: (raw >> 7) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `Simm5Vd` format.
+pub fn parse_simm5_vd(op: OpcodeSimm5Vd, raw: u32) -> Format {
+    Format::Simm5Vd(FormatSimm5Vd {
+        op,
+        raw,
+        simm5: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `Simm5VdVmVs2` format.
+pub fn parse_simm5_vd_vm_vs2(op: OpcodeSimm5VdVmVs2, raw: u32) -> Format {
+    Format::Simm5VdVmVs2(FormatSimm5VdVmVs2 {
+        op,
+        raw,
+        simm5: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `Simm5VdVs2` format.
+pub fn parse_simm5_vd_vs2(op: OpcodeSimm5VdVs2, raw: u32) -> Format {
+    Format::Simm5VdVs2(FormatSimm5VdVs2 {
+        op,
+        raw,
+        simm5: (raw >> 15) & 0x1f,
+        vd: (raw >> 7) & 0x1f,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `VdVm` format.
+pub fn parse_vd_vm(op: OpcodeVdVm, raw: u32) -> Format {
+    Format::VdVm(FormatVdVm {
+        op,
+        raw,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+    })
+}
+
+/// Parse an instruction with the `VdVmVs1Vs2` format.
+pub fn parse_vd_vm_vs1_vs2(op: OpcodeVdVmVs1Vs2, raw: u32) -> Format {
+    Format::VdVmVs1Vs2(FormatVdVmVs1Vs2 {
+        op,
+        raw,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs1: (raw >> 15) & 0x1f,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `VdVmVs2` format.
+pub fn parse_vd_vm_vs2(op: OpcodeVdVmVs2, raw: u32) -> Format {
+    Format::VdVmVs2(FormatVdVmVs2 {
+        op,
+        raw,
+        vd: (raw >> 7) & 0x1f,
+        vm: (raw >> 25) & 0x1,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `VdVs1` format.
+pub fn parse_vd_vs1(op: OpcodeVdVs1, raw: u32) -> Format {
+    Format::VdVs1(FormatVdVs1 {
+        op,
+        raw,
+        vd: (raw >> 7) & 0x1f,
+        vs1: (raw >> 15) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `VdVs1Vs2` format.
+pub fn parse_vd_vs1_vs2(op: OpcodeVdVs1Vs2, raw: u32) -> Format {
+    Format::VdVs1Vs2(FormatVdVs1Vs2 {
+        op,
+        raw,
+        vd: (raw >> 7) & 0x1f,
+        vs1: (raw >> 15) & 0x1f,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
+/// Parse an instruction with the `VdVs2` format.
+pub fn parse_vd_vs2(op: OpcodeVdVs2, raw: u32) -> Format {
+    Format::VdVs2(FormatVdVs2 {
+        op,
+        raw,
+        vd: (raw >> 7) & 0x1f,
+        vs2: (raw >> 20) & 0x1f,
+    })
+}
+
 /// Decode instruction into string.
 pub fn inst_to_string(raw: Format) -> String {
     match raw {
@@ -2990,6 +4961,12 @@ pub fn inst_to_string(raw: Format) -> String {
         Format::Imm5Rd(x) => x.op.to_string(),
         Format::Imm5RdRs1(x) => x.op.to_string(),
         Format::Jimm20Rd(x) => x.op.to_string(),
+        Format::NfRs1Rs2VdVm(x) => x.op.to_string(),
+        Format::NfRs1Rs2VmVs3(x) => x.op.to_string(),
+        Format::NfRs1VdVm(x) => x.op.to_string(),
+        Format::NfRs1VdVmVs2(x) => x.op.to_string(),
+        Format::NfRs1VmVs2Vs3(x) => x.op.to_string(),
+        Format::NfRs1VmVs3(x) => x.op.to_string(),
         Format::RdRmRs1(x) => x.op.to_string(),
         Format::RdRmRs1Rs2(x) => x.op.to_string(),
         Format::RdRmRs1Rs2Rs3(x) => x.op.to_string(),
@@ -2999,9 +4976,27 @@ pub fn inst_to_string(raw: Format) -> String {
         Format::RdRs1Rs3Shamt(x) => x.op.to_string(),
         Format::RdRs1Shamt(x) => x.op.to_string(),
         Format::RdRs1Shamtw(x) => x.op.to_string(),
+        Format::RdRs1Zimm11(x) => x.op.to_string(),
         Format::RdRs2(x) => x.op.to_string(),
+        Format::RdVmVs2(x) => x.op.to_string(),
+        Format::RdVs2(x) => x.op.to_string(),
+        Format::RdZimmZimm10(x) => x.op.to_string(),
         Format::Rs1(x) => x.op.to_string(),
         Format::Rs1Rs2(x) => x.op.to_string(),
+        Format::Rs1Vd(x) => x.op.to_string(),
+        Format::Rs1VdVmVs2(x) => x.op.to_string(),
+        Format::Rs1VdVmVs2Wd(x) => x.op.to_string(),
+        Format::Rs1VdVs2(x) => x.op.to_string(),
+        Format::Rs1Vs3(x) => x.op.to_string(),
+        Format::Simm5Vd(x) => x.op.to_string(),
+        Format::Simm5VdVmVs2(x) => x.op.to_string(),
+        Format::Simm5VdVs2(x) => x.op.to_string(),
+        Format::VdVm(x) => x.op.to_string(),
+        Format::VdVmVs1Vs2(x) => x.op.to_string(),
+        Format::VdVmVs2(x) => x.op.to_string(),
+        Format::VdVs1(x) => x.op.to_string(),
+        Format::VdVs1Vs2(x) => x.op.to_string(),
+        Format::VdVs2(x) => x.op.to_string(),
         _ => "Unsupported instruction format".to_string(),
     }
 }
@@ -3080,7 +5075,6 @@ pub struct Latency {
     csrrsi: u8,
     csrrci: u8,
     flh: u8,
-    flb: u8,
     // Format::Imm12Rs1
     scfgwi: u8,
     // Format::Imm12Rs1StaggerMaskStaggerMax
@@ -3095,7 +5089,6 @@ pub struct Latency {
     fsd: u8,
     fsq: u8,
     fsh: u8,
-    fsb: u8,
     // Format::Imm20Rd
     lui: u8,
     auipc: u8,
@@ -3105,6 +5098,84 @@ pub struct Latency {
     dmcpyi: u8,
     // Format::Jimm20Rd
     jal: u8,
+    // Format::NfRs1Rs2VdVm
+    vlse8_v: u8,
+    vlse16_v: u8,
+    vlse32_v: u8,
+    vlse64_v: u8,
+    vlse128_v: u8,
+    vlse256_v: u8,
+    vlse512_v: u8,
+    vlse1024_v: u8,
+    // Format::NfRs1Rs2VmVs3
+    vsse8_v: u8,
+    vsse16_v: u8,
+    vsse32_v: u8,
+    vsse64_v: u8,
+    vsse128_v: u8,
+    vsse256_v: u8,
+    vsse512_v: u8,
+    vsse1024_v: u8,
+    // Format::NfRs1VdVm
+    vle8_v: u8,
+    vle16_v: u8,
+    vle32_v: u8,
+    vle64_v: u8,
+    vle128_v: u8,
+    vle256_v: u8,
+    vle512_v: u8,
+    vle1024_v: u8,
+    vle8ff_v: u8,
+    vle16ff_v: u8,
+    vle32ff_v: u8,
+    vle64ff_v: u8,
+    vle128ff_v: u8,
+    vle256ff_v: u8,
+    vle512ff_v: u8,
+    vle1024ff_v: u8,
+    // Format::NfRs1VdVmVs2
+    vluxei8_v: u8,
+    vluxei16_v: u8,
+    vluxei32_v: u8,
+    vluxei64_v: u8,
+    vluxei128_v: u8,
+    vluxei256_v: u8,
+    vluxei512_v: u8,
+    vluxei1024_v: u8,
+    vloxei8_v: u8,
+    vloxei16_v: u8,
+    vloxei32_v: u8,
+    vloxei64_v: u8,
+    vloxei128_v: u8,
+    vloxei256_v: u8,
+    vloxei512_v: u8,
+    vloxei1024_v: u8,
+    // Format::NfRs1VmVs2Vs3
+    vsuxei8_v: u8,
+    vsuxei16_v: u8,
+    vsuxei32_v: u8,
+    vsuxei64_v: u8,
+    vsuxei128_v: u8,
+    vsuxei256_v: u8,
+    vsuxei512_v: u8,
+    vsuxei1024_v: u8,
+    vsoxei8_v: u8,
+    vsoxei16_v: u8,
+    vsoxei32_v: u8,
+    vsoxei64_v: u8,
+    vsoxei128_v: u8,
+    vsoxei256_v: u8,
+    vsoxei512_v: u8,
+    vsoxei1024_v: u8,
+    // Format::NfRs1VmVs3
+    vse8_v: u8,
+    vse16_v: u8,
+    vse32_v: u8,
+    vse64_v: u8,
+    vse128_v: u8,
+    vse256_v: u8,
+    vse512_v: u8,
+    vse1024_v: u8,
     // Format::RdRmRs1
     fsqrt_s: u8,
     fcvt_w_s: u8,
@@ -3169,10 +5240,6 @@ pub struct Latency {
     fsub_h: u8,
     fmul_h: u8,
     fdiv_h: u8,
-    fmulex_s_h: u8,
-    fmacex_s_h: u8,
-    fmulex_s_b: u8,
-    fmacex_s_b: u8,
     // Format::RdRmRs1Rs2Rs3
     fmadd_s: u8,
     fmsub_s: u8,
@@ -3225,56 +5292,6 @@ pub struct Latency {
     fcvt_d_h: u8,
     fcvt_h_b: u8,
     fcvt_b_b: u8,
-    vfsqrt_s: u8,
-    vfclass_s: u8,
-    vfmv_x_s: u8,
-    vfmv_s_x: u8,
-    vfcvt_x_s: u8,
-    vfcvt_xu_s: u8,
-    vfcvt_s_x: u8,
-    vfcvt_s_xu: u8,
-    vfcvt_h_h: u8,
-    vfcvtu_h_h: u8,
-    vfsqrt_h: u8,
-    vfclass_h: u8,
-    vfmv_x_h: u8,
-    vfmv_h_x: u8,
-    vfcvt_x_h: u8,
-    vfcvt_xu_h: u8,
-    vfcvt_h_x: u8,
-    vfcvt_h_xu: u8,
-    vfcvt_s_h: u8,
-    vfcvtu_s_h: u8,
-    vfcvt_h_s: u8,
-    vfcvtu_h_s: u8,
-    vfsqrt_b: u8,
-    vfmv_x_b: u8,
-    vfmv_b_x: u8,
-    vfclass_b: u8,
-    vfcvt_x_b: u8,
-    vfcvt_xu_b: u8,
-    vfcvt_b_x: u8,
-    vfcvt_b_xu: u8,
-    vfcvt_s_b: u8,
-    vfcvtu_s_b: u8,
-    vfcvt_b_s: u8,
-    vfcvtu_b_s: u8,
-    vfcvt_h_b: u8,
-    vfcvtu_h_b: u8,
-    vfcvt_b_h: u8,
-    vfcvtu_b_h: u8,
-    vfcvt_b_b: u8,
-    vfcvtu_b_b: u8,
-    vfsum_s: u8,
-    vfnsum_s: u8,
-    vfsum_h: u8,
-    vfnsum_h: u8,
-    vfsum_b: u8,
-    vfnsum_b: u8,
-    vfsumex_s_h: u8,
-    vfnsumex_s_h: u8,
-    vfsumex_h_b: u8,
-    vfnsumex_h_b: u8,
     // Format::RdRs1Rs2
     add: u8,
     sub: u8,
@@ -3368,140 +5385,7 @@ pub struct Latency {
     feq_h: u8,
     flt_h: u8,
     fle_h: u8,
-    vfadd_s: u8,
-    vfadd_r_s: u8,
-    vfsub_s: u8,
-    vfsub_r_s: u8,
-    vfmul_s: u8,
-    vfmul_r_s: u8,
-    vfdiv_s: u8,
-    vfdiv_r_s: u8,
-    vfmin_s: u8,
-    vfmin_r_s: u8,
-    vfmax_s: u8,
-    vfmax_r_s: u8,
-    vfmac_s: u8,
-    vfmac_r_s: u8,
-    vfmre_s: u8,
-    vfmre_r_s: u8,
-    vfsgnj_s: u8,
-    vfsgnj_r_s: u8,
-    vfsgnjn_s: u8,
-    vfsgnjn_r_s: u8,
-    vfsgnjx_s: u8,
-    vfsgnjx_r_s: u8,
-    vfeq_s: u8,
-    vfeq_r_s: u8,
-    vfne_s: u8,
-    vfne_r_s: u8,
-    vflt_s: u8,
-    vflt_r_s: u8,
-    vfge_s: u8,
-    vfge_r_s: u8,
-    vfle_s: u8,
-    vfle_r_s: u8,
-    vfgt_s: u8,
-    vfgt_r_s: u8,
-    vfcpka_s_s: u8,
-    vfcpkb_s_s: u8,
-    vfcpkc_s_s: u8,
-    vfcpkd_s_s: u8,
-    vfcpka_s_d: u8,
-    vfcpkb_s_d: u8,
-    vfcpkc_s_d: u8,
-    vfcpkd_s_d: u8,
-    vfadd_h: u8,
-    vfadd_r_h: u8,
-    vfsub_h: u8,
-    vfsub_r_h: u8,
-    vfmul_h: u8,
-    vfmul_r_h: u8,
-    vfdiv_h: u8,
-    vfdiv_r_h: u8,
-    vfmin_h: u8,
-    vfmin_r_h: u8,
-    vfmax_h: u8,
-    vfmax_r_h: u8,
-    vfmac_h: u8,
-    vfmac_r_h: u8,
-    vfmre_h: u8,
-    vfmre_r_h: u8,
-    vfsgnj_h: u8,
-    vfsgnj_r_h: u8,
-    vfsgnjn_h: u8,
-    vfsgnjn_r_h: u8,
-    vfsgnjx_h: u8,
-    vfsgnjx_r_h: u8,
-    vfeq_h: u8,
-    vfeq_r_h: u8,
-    vfne_h: u8,
-    vfne_r_h: u8,
-    vflt_h: u8,
-    vflt_r_h: u8,
-    vfge_h: u8,
-    vfge_r_h: u8,
-    vfle_h: u8,
-    vfle_r_h: u8,
-    vfgt_h: u8,
-    vfgt_r_h: u8,
-    vfcpka_h_s: u8,
-    vfcpkb_h_s: u8,
-    vfcpkc_h_s: u8,
-    vfcpkd_h_s: u8,
-    vfcpka_h_d: u8,
-    vfcpkb_h_d: u8,
-    vfcpkc_h_d: u8,
-    vfcpkd_h_d: u8,
-    vfadd_b: u8,
-    vfadd_r_b: u8,
-    vfsub_b: u8,
-    vfsub_r_b: u8,
-    vfmul_b: u8,
-    vfmul_r_b: u8,
-    vfdiv_b: u8,
-    vfdiv_r_b: u8,
-    vfmin_b: u8,
-    vfmin_r_b: u8,
-    vfmax_b: u8,
-    vfmax_r_b: u8,
-    vfmac_b: u8,
-    vfmac_r_b: u8,
-    vfmre_b: u8,
-    vfmre_r_b: u8,
-    vfsgnj_b: u8,
-    vfsgnj_r_b: u8,
-    vfsgnjn_b: u8,
-    vfsgnjn_r_b: u8,
-    vfsgnjx_b: u8,
-    vfsgnjx_r_b: u8,
-    vfeq_b: u8,
-    vfeq_r_b: u8,
-    vfne_b: u8,
-    vfne_r_b: u8,
-    vflt_b: u8,
-    vflt_r_b: u8,
-    vfge_b: u8,
-    vfge_r_b: u8,
-    vfle_b: u8,
-    vfle_r_b: u8,
-    vfgt_b: u8,
-    vfgt_r_b: u8,
-    vfcpka_b_s: u8,
-    vfcpkb_b_s: u8,
-    vfcpkc_b_s: u8,
-    vfcpkd_b_s: u8,
-    vfcpka_b_d: u8,
-    vfcpkb_b_d: u8,
-    vfcpkc_b_d: u8,
-    vfcpkd_b_d: u8,
-    vfdotpex_s_h: u8,
-    vfdotpex_s_r_h: u8,
-    vfndotpex_s_h: u8,
-    vfndotpex_s_r_h: u8,
-    vfdotpex_h_b: u8,
-    vfdotpex_h_r_b: u8,
-    vfndotpex_h_b: u8,
-    vfndotpex_h_r_b: u8,
+    vsetvl: u8,
     // Format::RdRs1Rs2Rs3
     cmix: u8,
     cmov: u8,
@@ -3528,9 +5412,19 @@ pub struct Latency {
     sraiw: u8,
     shfli: u8,
     unshfli: u8,
+    // Format::RdRs1Zimm11
+    vsetvli: u8,
     // Format::RdRs2
     dmstat: u8,
     scfgr: u8,
+    // Format::RdVmVs2
+    vcpop_m: u8,
+    vfirst_m: u8,
+    // Format::RdVs2
+    vfmv_f_s: u8,
+    vmv_x_s: u8,
+    // Format::RdZimmZimm10
+    vsetivli: u8,
     // Format::Rs1
     dmrep: u8,
     // Format::Rs1Rs2
@@ -3545,6 +5439,390 @@ pub struct Latency {
     dmdst: u8,
     dmstr: u8,
     scfgw: u8,
+    // Format::Rs1Vd
+    vlm_v: u8,
+    vl1re8_v: u8,
+    vl1re16_v: u8,
+    vl1re32_v: u8,
+    vl1re64_v: u8,
+    vl2re8_v: u8,
+    vl2re16_v: u8,
+    vl2re32_v: u8,
+    vl2re64_v: u8,
+    vl4re8_v: u8,
+    vl4re16_v: u8,
+    vl4re32_v: u8,
+    vl4re64_v: u8,
+    vl8re8_v: u8,
+    vl8re16_v: u8,
+    vl8re32_v: u8,
+    vl8re64_v: u8,
+    vfmv_s_f: u8,
+    vfmv_v_f: u8,
+    vmv_v_x: u8,
+    vmv_s_x: u8,
+    // Format::Rs1VdVmVs2
+    vfadd_vf: u8,
+    vfsub_vf: u8,
+    vfmin_vf: u8,
+    vfmax_vf: u8,
+    vfsgnj_vf: u8,
+    vfsgnjn_vf: u8,
+    vfsgnjx_vf: u8,
+    vfslide1up_vf: u8,
+    vfslide1down_vf: u8,
+    vmfeq_vf: u8,
+    vmfle_vf: u8,
+    vmflt_vf: u8,
+    vmfne_vf: u8,
+    vmfgt_vf: u8,
+    vmfge_vf: u8,
+    vfdiv_vf: u8,
+    vfrdiv_vf: u8,
+    vfmul_vf: u8,
+    vfrsub_vf: u8,
+    vfmadd_vf: u8,
+    vfnmadd_vf: u8,
+    vfmsub_vf: u8,
+    vfnmsub_vf: u8,
+    vfmacc_vf: u8,
+    vfnmacc_vf: u8,
+    vfmsac_vf: u8,
+    vfnmsac_vf: u8,
+    vfwadd_vf: u8,
+    vfwsub_vf: u8,
+    vfwadd_wf: u8,
+    vfwsub_wf: u8,
+    vfwmul_vf: u8,
+    vfwdotp_vf: u8,
+    vfwmacc_vf: u8,
+    vfwnmacc_vf: u8,
+    vfwmsac_vf: u8,
+    vfwnmsac_vf: u8,
+    vadd_vx: u8,
+    vsub_vx: u8,
+    vrsub_vx: u8,
+    vminu_vx: u8,
+    vmin_vx: u8,
+    vmaxu_vx: u8,
+    vmax_vx: u8,
+    vand_vx: u8,
+    vor_vx: u8,
+    vxor_vx: u8,
+    vrgather_vx: u8,
+    vslideup_vx: u8,
+    vslidedown_vx: u8,
+    vmseq_vx: u8,
+    vmsne_vx: u8,
+    vmsltu_vx: u8,
+    vmslt_vx: u8,
+    vmsleu_vx: u8,
+    vmsle_vx: u8,
+    vmsgtu_vx: u8,
+    vmsgt_vx: u8,
+    vsaddu_vx: u8,
+    vsadd_vx: u8,
+    vssubu_vx: u8,
+    vssub_vx: u8,
+    vsll_vx: u8,
+    vsmul_vx: u8,
+    vsrl_vx: u8,
+    vsra_vx: u8,
+    vssrl_vx: u8,
+    vssra_vx: u8,
+    vnsrl_wx: u8,
+    vnsra_wx: u8,
+    vnclipu_wx: u8,
+    vnclip_wx: u8,
+    vaaddu_vx: u8,
+    vaadd_vx: u8,
+    vasubu_vx: u8,
+    vasub_vx: u8,
+    vslide1up_vx: u8,
+    vslide1down_vx: u8,
+    vdivu_vx: u8,
+    vdiv_vx: u8,
+    vremu_vx: u8,
+    vrem_vx: u8,
+    vmulhu_vx: u8,
+    vmul_vx: u8,
+    vmulhsu_vx: u8,
+    vmulh_vx: u8,
+    vmadd_vx: u8,
+    vnmsub_vx: u8,
+    vmacc_vx: u8,
+    vnmsac_vx: u8,
+    vwaddu_vx: u8,
+    vwadd_vx: u8,
+    vwsubu_vx: u8,
+    vwsub_vx: u8,
+    vwaddu_wx: u8,
+    vwadd_wx: u8,
+    vwsubu_wx: u8,
+    vwsub_wx: u8,
+    vwmulu_vx: u8,
+    vwmulsu_vx: u8,
+    vwmul_vx: u8,
+    vwmaccu_vx: u8,
+    vwmacc_vx: u8,
+    vwmaccus_vx: u8,
+    vwmaccsu_vx: u8,
+    // Format::Rs1VdVmVs2Wd
+    vamoswapei8_v: u8,
+    vamoaddei8_v: u8,
+    vamoxorei8_v: u8,
+    vamoandei8_v: u8,
+    vamoorei8_v: u8,
+    vamominei8_v: u8,
+    vamomaxei8_v: u8,
+    vamominuei8_v: u8,
+    vamomaxuei8_v: u8,
+    vamoswapei16_v: u8,
+    vamoaddei16_v: u8,
+    vamoxorei16_v: u8,
+    vamoandei16_v: u8,
+    vamoorei16_v: u8,
+    vamominei16_v: u8,
+    vamomaxei16_v: u8,
+    vamominuei16_v: u8,
+    vamomaxuei16_v: u8,
+    vamoswapei32_v: u8,
+    vamoaddei32_v: u8,
+    vamoxorei32_v: u8,
+    vamoandei32_v: u8,
+    vamoorei32_v: u8,
+    vamominei32_v: u8,
+    vamomaxei32_v: u8,
+    vamominuei32_v: u8,
+    vamomaxuei32_v: u8,
+    vamoswapei64_v: u8,
+    vamoaddei64_v: u8,
+    vamoxorei64_v: u8,
+    vamoandei64_v: u8,
+    vamoorei64_v: u8,
+    vamominei64_v: u8,
+    vamomaxei64_v: u8,
+    vamominuei64_v: u8,
+    vamomaxuei64_v: u8,
+    // Format::Rs1VdVs2
+    vfmerge_vfm: u8,
+    vadc_vxm: u8,
+    vmadc_vxm: u8,
+    vmadc_vx: u8,
+    vsbc_vxm: u8,
+    vmsbc_vxm: u8,
+    vmsbc_vx: u8,
+    vmerge_vxm: u8,
+    // Format::Rs1Vs3
+    vsm_v: u8,
+    vs1r_v: u8,
+    vs2r_v: u8,
+    vs4r_v: u8,
+    vs8r_v: u8,
+    // Format::Simm5Vd
+    vmv_v_i: u8,
+    // Format::Simm5VdVmVs2
+    vadd_vi: u8,
+    vrsub_vi: u8,
+    vand_vi: u8,
+    vor_vi: u8,
+    vxor_vi: u8,
+    vrgather_vi: u8,
+    vslideup_vi: u8,
+    vslidedown_vi: u8,
+    vmseq_vi: u8,
+    vmsne_vi: u8,
+    vmsleu_vi: u8,
+    vmsle_vi: u8,
+    vmsgtu_vi: u8,
+    vmsgt_vi: u8,
+    vsaddu_vi: u8,
+    vsadd_vi: u8,
+    vsll_vi: u8,
+    vsrl_vi: u8,
+    vsra_vi: u8,
+    vssrl_vi: u8,
+    vssra_vi: u8,
+    vnsrl_wi: u8,
+    vnsra_wi: u8,
+    vnclipu_wi: u8,
+    vnclip_wi: u8,
+    // Format::Simm5VdVs2
+    vadc_vim: u8,
+    vmadc_vim: u8,
+    vmadc_vi: u8,
+    vmerge_vim: u8,
+    // Format::VdVm
+    vid_v: u8,
+    // Format::VdVmVs1Vs2
+    vfadd_vv: u8,
+    vfredusum_vs: u8,
+    vfsub_vv: u8,
+    vfredosum_vs: u8,
+    vfmin_vv: u8,
+    vfredmin_vs: u8,
+    vfmax_vv: u8,
+    vfredmax_vs: u8,
+    vfsgnj_vv: u8,
+    vfsgnjn_vv: u8,
+    vfsgnjx_vv: u8,
+    vmfeq_vv: u8,
+    vmfle_vv: u8,
+    vmflt_vv: u8,
+    vmfne_vv: u8,
+    vfdiv_vv: u8,
+    vfmul_vv: u8,
+    vfmadd_vv: u8,
+    vfnmadd_vv: u8,
+    vfmsub_vv: u8,
+    vfnmsub_vv: u8,
+    vfmacc_vv: u8,
+    vfnmacc_vv: u8,
+    vfmsac_vv: u8,
+    vfnmsac_vv: u8,
+    vfwadd_vv: u8,
+    vfwredusum_vs: u8,
+    vfwsub_vv: u8,
+    vfwredosum_vs: u8,
+    vfwadd_wv: u8,
+    vfwsub_wv: u8,
+    vfwmul_vv: u8,
+    vfwdotp_vv: u8,
+    vfwmacc_vv: u8,
+    vfwnmacc_vv: u8,
+    vfwmsac_vv: u8,
+    vfwnmsac_vv: u8,
+    vadd_vv: u8,
+    vsub_vv: u8,
+    vminu_vv: u8,
+    vmin_vv: u8,
+    vmaxu_vv: u8,
+    vmax_vv: u8,
+    vand_vv: u8,
+    vor_vv: u8,
+    vxor_vv: u8,
+    vrgather_vv: u8,
+    vrgatherei16_vv: u8,
+    vmseq_vv: u8,
+    vmsne_vv: u8,
+    vmsltu_vv: u8,
+    vmslt_vv: u8,
+    vmsleu_vv: u8,
+    vmsle_vv: u8,
+    vsaddu_vv: u8,
+    vsadd_vv: u8,
+    vssubu_vv: u8,
+    vssub_vv: u8,
+    vsll_vv: u8,
+    vsmul_vv: u8,
+    vsrl_vv: u8,
+    vsra_vv: u8,
+    vssrl_vv: u8,
+    vssra_vv: u8,
+    vnsrl_wv: u8,
+    vnsra_wv: u8,
+    vnclipu_wv: u8,
+    vnclip_wv: u8,
+    vwredsumu_vs: u8,
+    vwredsum_vs: u8,
+    vredsum_vs: u8,
+    vredand_vs: u8,
+    vredor_vs: u8,
+    vredxor_vs: u8,
+    vredminu_vs: u8,
+    vredmin_vs: u8,
+    vredmaxu_vs: u8,
+    vredmax_vs: u8,
+    vaaddu_vv: u8,
+    vaadd_vv: u8,
+    vasubu_vv: u8,
+    vasub_vv: u8,
+    vmandn_mm: u8,
+    vmand_mm: u8,
+    vmor_mm: u8,
+    vmxor_mm: u8,
+    vmorn_mm: u8,
+    vmnand_mm: u8,
+    vmnor_mm: u8,
+    vmxnor_mm: u8,
+    vdivu_vv: u8,
+    vdiv_vv: u8,
+    vremu_vv: u8,
+    vrem_vv: u8,
+    vmulhu_vv: u8,
+    vmul_vv: u8,
+    vmulhsu_vv: u8,
+    vmulh_vv: u8,
+    vmadd_vv: u8,
+    vnmsub_vv: u8,
+    vmacc_vv: u8,
+    vnmsac_vv: u8,
+    vwaddu_vv: u8,
+    vwadd_vv: u8,
+    vwsubu_vv: u8,
+    vwsub_vv: u8,
+    vwaddu_wv: u8,
+    vwadd_wv: u8,
+    vwsubu_wv: u8,
+    vwsub_wv: u8,
+    vwmulu_vv: u8,
+    vwmulsu_vv: u8,
+    vwmul_vv: u8,
+    vwmaccu_vv: u8,
+    vwmacc_vv: u8,
+    vwmaccsu_vv: u8,
+    // Format::VdVmVs2
+    vfcvt_xu_f_v: u8,
+    vfcvt_x_f_v: u8,
+    vfcvt_f_xu_v: u8,
+    vfcvt_f_x_v: u8,
+    vfcvt_rtz_xu_f_v: u8,
+    vfcvt_rtz_x_f_v: u8,
+    vfwcvt_xu_f_v: u8,
+    vfwcvt_x_f_v: u8,
+    vfwcvt_f_xu_v: u8,
+    vfwcvt_f_x_v: u8,
+    vfwcvt_f_f_v: u8,
+    vfwcvt_rtz_xu_f_v: u8,
+    vfwcvt_rtz_x_f_v: u8,
+    vfncvt_xu_f_w: u8,
+    vfncvt_x_f_w: u8,
+    vfncvt_f_xu_w: u8,
+    vfncvt_f_x_w: u8,
+    vfncvt_f_f_w: u8,
+    vfncvt_rod_f_f_w: u8,
+    vfncvt_rtz_xu_f_w: u8,
+    vfncvt_rtz_x_f_w: u8,
+    vfsqrt_v: u8,
+    vfrsqrt7_v: u8,
+    vfrec7_v: u8,
+    vfclass_v: u8,
+    vzext_vf8: u8,
+    vsext_vf8: u8,
+    vzext_vf4: u8,
+    vsext_vf4: u8,
+    vzext_vf2: u8,
+    vsext_vf2: u8,
+    vmsbf_m: u8,
+    vmsof_m: u8,
+    vmsif_m: u8,
+    viota_m: u8,
+    // Format::VdVs1
+    vmv_v_v: u8,
+    // Format::VdVs1Vs2
+    vadc_vvm: u8,
+    vmadc_vvm: u8,
+    vmadc_vv: u8,
+    vsbc_vvm: u8,
+    vmsbc_vvm: u8,
+    vmsbc_vv: u8,
+    vmerge_vvm: u8,
+    vcompress_vm: u8,
+    // Format::VdVs2
+    vmv1r_v: u8,
+    vmv2r_v: u8,
+    vmv4r_v: u8,
+    vmv8r_v: u8,
 }
 
 /// Struct to store the latency of each instruction.
@@ -3615,7 +5893,6 @@ impl Default for Latency {
             csrrsi: 1,
             csrrci: 1,
             flh: 1,
-            flb: 1,
             scfgwi: 1,
             frep_o: 1,
             frep_i: 1,
@@ -3627,12 +5904,83 @@ impl Default for Latency {
             fsd: 1,
             fsq: 1,
             fsh: 1,
-            fsb: 1,
             lui: 1,
             auipc: 1,
             dmstati: 1,
             dmcpyi: 1,
             jal: 1,
+            vlse8_v: 1,
+            vlse16_v: 1,
+            vlse32_v: 1,
+            vlse64_v: 1,
+            vlse128_v: 1,
+            vlse256_v: 1,
+            vlse512_v: 1,
+            vlse1024_v: 1,
+            vsse8_v: 1,
+            vsse16_v: 1,
+            vsse32_v: 1,
+            vsse64_v: 1,
+            vsse128_v: 1,
+            vsse256_v: 1,
+            vsse512_v: 1,
+            vsse1024_v: 1,
+            vle8_v: 1,
+            vle16_v: 1,
+            vle32_v: 1,
+            vle64_v: 1,
+            vle128_v: 1,
+            vle256_v: 1,
+            vle512_v: 1,
+            vle1024_v: 1,
+            vle8ff_v: 1,
+            vle16ff_v: 1,
+            vle32ff_v: 1,
+            vle64ff_v: 1,
+            vle128ff_v: 1,
+            vle256ff_v: 1,
+            vle512ff_v: 1,
+            vle1024ff_v: 1,
+            vluxei8_v: 1,
+            vluxei16_v: 1,
+            vluxei32_v: 1,
+            vluxei64_v: 1,
+            vluxei128_v: 1,
+            vluxei256_v: 1,
+            vluxei512_v: 1,
+            vluxei1024_v: 1,
+            vloxei8_v: 1,
+            vloxei16_v: 1,
+            vloxei32_v: 1,
+            vloxei64_v: 1,
+            vloxei128_v: 1,
+            vloxei256_v: 1,
+            vloxei512_v: 1,
+            vloxei1024_v: 1,
+            vsuxei8_v: 1,
+            vsuxei16_v: 1,
+            vsuxei32_v: 1,
+            vsuxei64_v: 1,
+            vsuxei128_v: 1,
+            vsuxei256_v: 1,
+            vsuxei512_v: 1,
+            vsuxei1024_v: 1,
+            vsoxei8_v: 1,
+            vsoxei16_v: 1,
+            vsoxei32_v: 1,
+            vsoxei64_v: 1,
+            vsoxei128_v: 1,
+            vsoxei256_v: 1,
+            vsoxei512_v: 1,
+            vsoxei1024_v: 1,
+            vse8_v: 1,
+            vse16_v: 1,
+            vse32_v: 1,
+            vse64_v: 1,
+            vse128_v: 1,
+            vse256_v: 1,
+            vse512_v: 1,
+            vse1024_v: 1,
             fsqrt_s: 1,
             fcvt_w_s: 1,
             fcvt_wu_s: 1,
@@ -3695,10 +6043,6 @@ impl Default for Latency {
             fsub_h: 1,
             fmul_h: 1,
             fdiv_h: 1,
-            fmulex_s_h: 1,
-            fmacex_s_h: 1,
-            fmulex_s_b: 1,
-            fmacex_s_b: 1,
             fmadd_s: 1,
             fmsub_s: 1,
             fnmsub_s: 1,
@@ -3749,56 +6093,6 @@ impl Default for Latency {
             fcvt_d_h: 1,
             fcvt_h_b: 1,
             fcvt_b_b: 1,
-            vfsqrt_s: 1,
-            vfclass_s: 1,
-            vfmv_x_s: 1,
-            vfmv_s_x: 1,
-            vfcvt_x_s: 1,
-            vfcvt_xu_s: 1,
-            vfcvt_s_x: 1,
-            vfcvt_s_xu: 1,
-            vfcvt_h_h: 1,
-            vfcvtu_h_h: 1,
-            vfsqrt_h: 1,
-            vfclass_h: 1,
-            vfmv_x_h: 1,
-            vfmv_h_x: 1,
-            vfcvt_x_h: 1,
-            vfcvt_xu_h: 1,
-            vfcvt_h_x: 1,
-            vfcvt_h_xu: 1,
-            vfcvt_s_h: 1,
-            vfcvtu_s_h: 1,
-            vfcvt_h_s: 1,
-            vfcvtu_h_s: 1,
-            vfsqrt_b: 1,
-            vfmv_x_b: 1,
-            vfmv_b_x: 1,
-            vfclass_b: 1,
-            vfcvt_x_b: 1,
-            vfcvt_xu_b: 1,
-            vfcvt_b_x: 1,
-            vfcvt_b_xu: 1,
-            vfcvt_s_b: 1,
-            vfcvtu_s_b: 1,
-            vfcvt_b_s: 1,
-            vfcvtu_b_s: 1,
-            vfcvt_h_b: 1,
-            vfcvtu_h_b: 1,
-            vfcvt_b_h: 1,
-            vfcvtu_b_h: 1,
-            vfcvt_b_b: 1,
-            vfcvtu_b_b: 1,
-            vfsum_s: 1,
-            vfnsum_s: 1,
-            vfsum_h: 1,
-            vfnsum_h: 1,
-            vfsum_b: 1,
-            vfnsum_b: 1,
-            vfsumex_s_h: 1,
-            vfnsumex_s_h: 1,
-            vfsumex_h_b: 1,
-            vfnsumex_h_b: 1,
             add: 1,
             sub: 1,
             sll: 1,
@@ -3891,140 +6185,7 @@ impl Default for Latency {
             feq_h: 1,
             flt_h: 1,
             fle_h: 1,
-            vfadd_s: 1,
-            vfadd_r_s: 1,
-            vfsub_s: 1,
-            vfsub_r_s: 1,
-            vfmul_s: 1,
-            vfmul_r_s: 1,
-            vfdiv_s: 1,
-            vfdiv_r_s: 1,
-            vfmin_s: 1,
-            vfmin_r_s: 1,
-            vfmax_s: 1,
-            vfmax_r_s: 1,
-            vfmac_s: 1,
-            vfmac_r_s: 1,
-            vfmre_s: 1,
-            vfmre_r_s: 1,
-            vfsgnj_s: 1,
-            vfsgnj_r_s: 1,
-            vfsgnjn_s: 1,
-            vfsgnjn_r_s: 1,
-            vfsgnjx_s: 1,
-            vfsgnjx_r_s: 1,
-            vfeq_s: 1,
-            vfeq_r_s: 1,
-            vfne_s: 1,
-            vfne_r_s: 1,
-            vflt_s: 1,
-            vflt_r_s: 1,
-            vfge_s: 1,
-            vfge_r_s: 1,
-            vfle_s: 1,
-            vfle_r_s: 1,
-            vfgt_s: 1,
-            vfgt_r_s: 1,
-            vfcpka_s_s: 1,
-            vfcpkb_s_s: 1,
-            vfcpkc_s_s: 1,
-            vfcpkd_s_s: 1,
-            vfcpka_s_d: 1,
-            vfcpkb_s_d: 1,
-            vfcpkc_s_d: 1,
-            vfcpkd_s_d: 1,
-            vfadd_h: 1,
-            vfadd_r_h: 1,
-            vfsub_h: 1,
-            vfsub_r_h: 1,
-            vfmul_h: 1,
-            vfmul_r_h: 1,
-            vfdiv_h: 1,
-            vfdiv_r_h: 1,
-            vfmin_h: 1,
-            vfmin_r_h: 1,
-            vfmax_h: 1,
-            vfmax_r_h: 1,
-            vfmac_h: 1,
-            vfmac_r_h: 1,
-            vfmre_h: 1,
-            vfmre_r_h: 1,
-            vfsgnj_h: 1,
-            vfsgnj_r_h: 1,
-            vfsgnjn_h: 1,
-            vfsgnjn_r_h: 1,
-            vfsgnjx_h: 1,
-            vfsgnjx_r_h: 1,
-            vfeq_h: 1,
-            vfeq_r_h: 1,
-            vfne_h: 1,
-            vfne_r_h: 1,
-            vflt_h: 1,
-            vflt_r_h: 1,
-            vfge_h: 1,
-            vfge_r_h: 1,
-            vfle_h: 1,
-            vfle_r_h: 1,
-            vfgt_h: 1,
-            vfgt_r_h: 1,
-            vfcpka_h_s: 1,
-            vfcpkb_h_s: 1,
-            vfcpkc_h_s: 1,
-            vfcpkd_h_s: 1,
-            vfcpka_h_d: 1,
-            vfcpkb_h_d: 1,
-            vfcpkc_h_d: 1,
-            vfcpkd_h_d: 1,
-            vfadd_b: 1,
-            vfadd_r_b: 1,
-            vfsub_b: 1,
-            vfsub_r_b: 1,
-            vfmul_b: 1,
-            vfmul_r_b: 1,
-            vfdiv_b: 1,
-            vfdiv_r_b: 1,
-            vfmin_b: 1,
-            vfmin_r_b: 1,
-            vfmax_b: 1,
-            vfmax_r_b: 1,
-            vfmac_b: 1,
-            vfmac_r_b: 1,
-            vfmre_b: 1,
-            vfmre_r_b: 1,
-            vfsgnj_b: 1,
-            vfsgnj_r_b: 1,
-            vfsgnjn_b: 1,
-            vfsgnjn_r_b: 1,
-            vfsgnjx_b: 1,
-            vfsgnjx_r_b: 1,
-            vfeq_b: 1,
-            vfeq_r_b: 1,
-            vfne_b: 1,
-            vfne_r_b: 1,
-            vflt_b: 1,
-            vflt_r_b: 1,
-            vfge_b: 1,
-            vfge_r_b: 1,
-            vfle_b: 1,
-            vfle_r_b: 1,
-            vfgt_b: 1,
-            vfgt_r_b: 1,
-            vfcpka_b_s: 1,
-            vfcpkb_b_s: 1,
-            vfcpkc_b_s: 1,
-            vfcpkd_b_s: 1,
-            vfcpka_b_d: 1,
-            vfcpkb_b_d: 1,
-            vfcpkc_b_d: 1,
-            vfcpkd_b_d: 1,
-            vfdotpex_s_h: 1,
-            vfdotpex_s_r_h: 1,
-            vfndotpex_s_h: 1,
-            vfndotpex_s_r_h: 1,
-            vfdotpex_h_b: 1,
-            vfdotpex_h_r_b: 1,
-            vfndotpex_h_b: 1,
-            vfndotpex_h_r_b: 1,
+            vsetvl: 1,
             cmix: 1,
             cmov: 1,
             fsl: 1,
@@ -4047,8 +6208,14 @@ impl Default for Latency {
             sraiw: 1,
             shfli: 1,
             unshfli: 1,
+            vsetvli: 1,
             dmstat: 1,
             scfgr: 1,
+            vcpop_m: 1,
+            vfirst_m: 1,
+            vfmv_f_s: 1,
+            vmv_x_s: 1,
+            vsetivli: 1,
             dmrep: 1,
             hfence_vvma: 1,
             hfence_gvma: 1,
@@ -4061,6 +6228,376 @@ impl Default for Latency {
             dmdst: 1,
             dmstr: 1,
             scfgw: 1,
+            vlm_v: 1,
+            vl1re8_v: 1,
+            vl1re16_v: 1,
+            vl1re32_v: 1,
+            vl1re64_v: 1,
+            vl2re8_v: 1,
+            vl2re16_v: 1,
+            vl2re32_v: 1,
+            vl2re64_v: 1,
+            vl4re8_v: 1,
+            vl4re16_v: 1,
+            vl4re32_v: 1,
+            vl4re64_v: 1,
+            vl8re8_v: 1,
+            vl8re16_v: 1,
+            vl8re32_v: 1,
+            vl8re64_v: 1,
+            vfmv_s_f: 1,
+            vfmv_v_f: 1,
+            vmv_v_x: 1,
+            vmv_s_x: 1,
+            vfadd_vf: 1,
+            vfsub_vf: 1,
+            vfmin_vf: 1,
+            vfmax_vf: 1,
+            vfsgnj_vf: 1,
+            vfsgnjn_vf: 1,
+            vfsgnjx_vf: 1,
+            vfslide1up_vf: 1,
+            vfslide1down_vf: 1,
+            vmfeq_vf: 1,
+            vmfle_vf: 1,
+            vmflt_vf: 1,
+            vmfne_vf: 1,
+            vmfgt_vf: 1,
+            vmfge_vf: 1,
+            vfdiv_vf: 1,
+            vfrdiv_vf: 1,
+            vfmul_vf: 1,
+            vfrsub_vf: 1,
+            vfmadd_vf: 1,
+            vfnmadd_vf: 1,
+            vfmsub_vf: 1,
+            vfnmsub_vf: 1,
+            vfmacc_vf: 1,
+            vfnmacc_vf: 1,
+            vfmsac_vf: 1,
+            vfnmsac_vf: 1,
+            vfwadd_vf: 1,
+            vfwsub_vf: 1,
+            vfwadd_wf: 1,
+            vfwsub_wf: 1,
+            vfwmul_vf: 1,
+            vfwdotp_vf: 1,
+            vfwmacc_vf: 1,
+            vfwnmacc_vf: 1,
+            vfwmsac_vf: 1,
+            vfwnmsac_vf: 1,
+            vadd_vx: 1,
+            vsub_vx: 1,
+            vrsub_vx: 1,
+            vminu_vx: 1,
+            vmin_vx: 1,
+            vmaxu_vx: 1,
+            vmax_vx: 1,
+            vand_vx: 1,
+            vor_vx: 1,
+            vxor_vx: 1,
+            vrgather_vx: 1,
+            vslideup_vx: 1,
+            vslidedown_vx: 1,
+            vmseq_vx: 1,
+            vmsne_vx: 1,
+            vmsltu_vx: 1,
+            vmslt_vx: 1,
+            vmsleu_vx: 1,
+            vmsle_vx: 1,
+            vmsgtu_vx: 1,
+            vmsgt_vx: 1,
+            vsaddu_vx: 1,
+            vsadd_vx: 1,
+            vssubu_vx: 1,
+            vssub_vx: 1,
+            vsll_vx: 1,
+            vsmul_vx: 1,
+            vsrl_vx: 1,
+            vsra_vx: 1,
+            vssrl_vx: 1,
+            vssra_vx: 1,
+            vnsrl_wx: 1,
+            vnsra_wx: 1,
+            vnclipu_wx: 1,
+            vnclip_wx: 1,
+            vaaddu_vx: 1,
+            vaadd_vx: 1,
+            vasubu_vx: 1,
+            vasub_vx: 1,
+            vslide1up_vx: 1,
+            vslide1down_vx: 1,
+            vdivu_vx: 1,
+            vdiv_vx: 1,
+            vremu_vx: 1,
+            vrem_vx: 1,
+            vmulhu_vx: 1,
+            vmul_vx: 1,
+            vmulhsu_vx: 1,
+            vmulh_vx: 1,
+            vmadd_vx: 1,
+            vnmsub_vx: 1,
+            vmacc_vx: 1,
+            vnmsac_vx: 1,
+            vwaddu_vx: 1,
+            vwadd_vx: 1,
+            vwsubu_vx: 1,
+            vwsub_vx: 1,
+            vwaddu_wx: 1,
+            vwadd_wx: 1,
+            vwsubu_wx: 1,
+            vwsub_wx: 1,
+            vwmulu_vx: 1,
+            vwmulsu_vx: 1,
+            vwmul_vx: 1,
+            vwmaccu_vx: 1,
+            vwmacc_vx: 1,
+            vwmaccus_vx: 1,
+            vwmaccsu_vx: 1,
+            vamoswapei8_v: 1,
+            vamoaddei8_v: 1,
+            vamoxorei8_v: 1,
+            vamoandei8_v: 1,
+            vamoorei8_v: 1,
+            vamominei8_v: 1,
+            vamomaxei8_v: 1,
+            vamominuei8_v: 1,
+            vamomaxuei8_v: 1,
+            vamoswapei16_v: 1,
+            vamoaddei16_v: 1,
+            vamoxorei16_v: 1,
+            vamoandei16_v: 1,
+            vamoorei16_v: 1,
+            vamominei16_v: 1,
+            vamomaxei16_v: 1,
+            vamominuei16_v: 1,
+            vamomaxuei16_v: 1,
+            vamoswapei32_v: 1,
+            vamoaddei32_v: 1,
+            vamoxorei32_v: 1,
+            vamoandei32_v: 1,
+            vamoorei32_v: 1,
+            vamominei32_v: 1,
+            vamomaxei32_v: 1,
+            vamominuei32_v: 1,
+            vamomaxuei32_v: 1,
+            vamoswapei64_v: 1,
+            vamoaddei64_v: 1,
+            vamoxorei64_v: 1,
+            vamoandei64_v: 1,
+            vamoorei64_v: 1,
+            vamominei64_v: 1,
+            vamomaxei64_v: 1,
+            vamominuei64_v: 1,
+            vamomaxuei64_v: 1,
+            vfmerge_vfm: 1,
+            vadc_vxm: 1,
+            vmadc_vxm: 1,
+            vmadc_vx: 1,
+            vsbc_vxm: 1,
+            vmsbc_vxm: 1,
+            vmsbc_vx: 1,
+            vmerge_vxm: 1,
+            vsm_v: 1,
+            vs1r_v: 1,
+            vs2r_v: 1,
+            vs4r_v: 1,
+            vs8r_v: 1,
+            vmv_v_i: 1,
+            vadd_vi: 1,
+            vrsub_vi: 1,
+            vand_vi: 1,
+            vor_vi: 1,
+            vxor_vi: 1,
+            vrgather_vi: 1,
+            vslideup_vi: 1,
+            vslidedown_vi: 1,
+            vmseq_vi: 1,
+            vmsne_vi: 1,
+            vmsleu_vi: 1,
+            vmsle_vi: 1,
+            vmsgtu_vi: 1,
+            vmsgt_vi: 1,
+            vsaddu_vi: 1,
+            vsadd_vi: 1,
+            vsll_vi: 1,
+            vsrl_vi: 1,
+            vsra_vi: 1,
+            vssrl_vi: 1,
+            vssra_vi: 1,
+            vnsrl_wi: 1,
+            vnsra_wi: 1,
+            vnclipu_wi: 1,
+            vnclip_wi: 1,
+            vadc_vim: 1,
+            vmadc_vim: 1,
+            vmadc_vi: 1,
+            vmerge_vim: 1,
+            vid_v: 1,
+            vfadd_vv: 1,
+            vfredusum_vs: 1,
+            vfsub_vv: 1,
+            vfredosum_vs: 1,
+            vfmin_vv: 1,
+            vfredmin_vs: 1,
+            vfmax_vv: 1,
+            vfredmax_vs: 1,
+            vfsgnj_vv: 1,
+            vfsgnjn_vv: 1,
+            vfsgnjx_vv: 1,
+            vmfeq_vv: 1,
+            vmfle_vv: 1,
+            vmflt_vv: 1,
+            vmfne_vv: 1,
+            vfdiv_vv: 1,
+            vfmul_vv: 1,
+            vfmadd_vv: 1,
+            vfnmadd_vv: 1,
+            vfmsub_vv: 1,
+            vfnmsub_vv: 1,
+            vfmacc_vv: 1,
+            vfnmacc_vv: 1,
+            vfmsac_vv: 1,
+            vfnmsac_vv: 1,
+            vfwadd_vv: 1,
+            vfwredusum_vs: 1,
+            vfwsub_vv: 1,
+            vfwredosum_vs: 1,
+            vfwadd_wv: 1,
+            vfwsub_wv: 1,
+            vfwmul_vv: 1,
+            vfwdotp_vv: 1,
+            vfwmacc_vv: 1,
+            vfwnmacc_vv: 1,
+            vfwmsac_vv: 1,
+            vfwnmsac_vv: 1,
+            vadd_vv: 1,
+            vsub_vv: 1,
+            vminu_vv: 1,
+            vmin_vv: 1,
+            vmaxu_vv: 1,
+            vmax_vv: 1,
+            vand_vv: 1,
+            vor_vv: 1,
+            vxor_vv: 1,
+            vrgather_vv: 1,
+            vrgatherei16_vv: 1,
+            vmseq_vv: 1,
+            vmsne_vv: 1,
+            vmsltu_vv: 1,
+            vmslt_vv: 1,
+            vmsleu_vv: 1,
+            vmsle_vv: 1,
+            vsaddu_vv: 1,
+            vsadd_vv: 1,
+            vssubu_vv: 1,
+            vssub_vv: 1,
+            vsll_vv: 1,
+            vsmul_vv: 1,
+            vsrl_vv: 1,
+            vsra_vv: 1,
+            vssrl_vv: 1,
+            vssra_vv: 1,
+            vnsrl_wv: 1,
+            vnsra_wv: 1,
+            vnclipu_wv: 1,
+            vnclip_wv: 1,
+            vwredsumu_vs: 1,
+            vwredsum_vs: 1,
+            vredsum_vs: 1,
+            vredand_vs: 1,
+            vredor_vs: 1,
+            vredxor_vs: 1,
+            vredminu_vs: 1,
+            vredmin_vs: 1,
+            vredmaxu_vs: 1,
+            vredmax_vs: 1,
+            vaaddu_vv: 1,
+            vaadd_vv: 1,
+            vasubu_vv: 1,
+            vasub_vv: 1,
+            vmandn_mm: 1,
+            vmand_mm: 1,
+            vmor_mm: 1,
+            vmxor_mm: 1,
+            vmorn_mm: 1,
+            vmnand_mm: 1,
+            vmnor_mm: 1,
+            vmxnor_mm: 1,
+            vdivu_vv: 1,
+            vdiv_vv: 1,
+            vremu_vv: 1,
+            vrem_vv: 1,
+            vmulhu_vv: 1,
+            vmul_vv: 1,
+            vmulhsu_vv: 1,
+            vmulh_vv: 1,
+            vmadd_vv: 1,
+            vnmsub_vv: 1,
+            vmacc_vv: 1,
+            vnmsac_vv: 1,
+            vwaddu_vv: 1,
+            vwadd_vv: 1,
+            vwsubu_vv: 1,
+            vwsub_vv: 1,
+            vwaddu_wv: 1,
+            vwadd_wv: 1,
+            vwsubu_wv: 1,
+            vwsub_wv: 1,
+            vwmulu_vv: 1,
+            vwmulsu_vv: 1,
+            vwmul_vv: 1,
+            vwmaccu_vv: 1,
+            vwmacc_vv: 1,
+            vwmaccsu_vv: 1,
+            vfcvt_xu_f_v: 1,
+            vfcvt_x_f_v: 1,
+            vfcvt_f_xu_v: 1,
+            vfcvt_f_x_v: 1,
+            vfcvt_rtz_xu_f_v: 1,
+            vfcvt_rtz_x_f_v: 1,
+            vfwcvt_xu_f_v: 1,
+            vfwcvt_x_f_v: 1,
+            vfwcvt_f_xu_v: 1,
+            vfwcvt_f_x_v: 1,
+            vfwcvt_f_f_v: 1,
+            vfwcvt_rtz_xu_f_v: 1,
+            vfwcvt_rtz_x_f_v: 1,
+            vfncvt_xu_f_w: 1,
+            vfncvt_x_f_w: 1,
+            vfncvt_f_xu_w: 1,
+            vfncvt_f_x_w: 1,
+            vfncvt_f_f_w: 1,
+            vfncvt_rod_f_f_w: 1,
+            vfncvt_rtz_xu_f_w: 1,
+            vfncvt_rtz_x_f_w: 1,
+            vfsqrt_v: 1,
+            vfrsqrt7_v: 1,
+            vfrec7_v: 1,
+            vfclass_v: 1,
+            vzext_vf8: 1,
+            vsext_vf8: 1,
+            vzext_vf4: 1,
+            vsext_vf4: 1,
+            vzext_vf2: 1,
+            vsext_vf2: 1,
+            vmsbf_m: 1,
+            vmsof_m: 1,
+            vmsif_m: 1,
+            viota_m: 1,
+            vmv_v_v: 1,
+            vadc_vvm: 1,
+            vmadc_vvm: 1,
+            vmadc_vv: 1,
+            vsbc_vvm: 1,
+            vmsbc_vvm: 1,
+            vmsbc_vv: 1,
+            vmerge_vvm: 1,
+            vcompress_vm: 1,
+            vmv1r_v: 1,
+            vmv2r_v: 1,
+            vmv4r_v: 1,
+            vmv8r_v: 1,
         }
     }
 }
